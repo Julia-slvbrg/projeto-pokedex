@@ -13,6 +13,6 @@ export const PokemonListContainer = styled.div`
     flex-wrap: wrap;
     margin: 4em;
     justify-content: space-around;
-    background-color: aqua;
+   /*  background-color: aqua; */
     
 `

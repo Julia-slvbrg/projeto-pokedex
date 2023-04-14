@@ -16,9 +16,7 @@ export const Router = (props) => {
                     element={
                         <PokemonListPage 
                             pokemonList={pokemonList} 
-                            getAllPokemon={getAllPokemon}
-                           
-                            
+                            getAllPokemon={getAllPokemon} 
                         />
                     } 
                 />

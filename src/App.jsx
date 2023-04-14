@@ -9,6 +9,15 @@ import { AppContainer } from "./AppStyle"
 import { BASE_URL } from "./constant/BASE_URL/BASE_URL"
 import Router from "./routes/Router"
 
+
+/* <!-- 
+
+  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
+ --> */
+
 function App() {
  
     
@@ -19,10 +28,8 @@ function App() {
     try {
         const response = await 
         axios.get(`${BASE_URL}pokemon?limit=81&offset=0`)
-
         //console.log(response.data) 
         setPokemonList(response.data.results)
-
     } catch (error) {
         //console.log(error.response)
     }
@@ -33,13 +40,10 @@ function App() {
   return (
     <AppContainer>
       <GlobalStyled/>
-      
       <Router 
         pokemonList={pokemonList} 
         getAllPokemon={getAllPokemon}
-      
       />
-
     </AppContainer>
     
   )
