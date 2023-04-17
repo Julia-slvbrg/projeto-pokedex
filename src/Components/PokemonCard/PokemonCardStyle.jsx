@@ -67,28 +67,28 @@ export const PokemonCardContainer = styled.div`
                 break;
         };
     }};
-    
-    background-repeat: no-repeat;
+        
     background-image: url(${pokeballWaterMark});
+    background-repeat: no-repeat;
     background-position-x: 11.2em;
-    background-position-y: -.3em;
+    background-position-y: -1em;
 `
 
 export const DataContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: flex-start;
  
 `
 
 export const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     margin: 1.5em 0 0 1em;
     width: 14em;
 `
-
-
 
 export const PokeId = styled.h3`
     font-family: 'Inter', sans-serif;
@@ -113,11 +113,11 @@ export const TypeContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
     gap: .5em;
     margin-left: -.75em;
     scale: .9;
 `
-
 
 export const Image = styled.img`
     width: 10em;
@@ -127,18 +127,51 @@ export const Image = styled.img`
     right: .5em;
 `
 
-
-export const ImageMark = styled.img`
-    width: 10em;
-    height: 10em;
-    position: relative;
-    bottom: 2.5em;
-    right: .5em;
- 
-`
-
 export const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5em 0 2em;
+    margin: -1.4em 0 0 0;
+`
+
+export const CatchButton = styled.button`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1em;
+    color: #0F0F0F;
+    line-height: 1em;
+    width: 10em;
+    height: 2.5em;
+    border-radius: .4em;
+    background-color: #DDDDDD;
+    border: 1px solid #DDDDDD;
+
+        :hover{
+            cursor: pointer;
+        };
+
+        :active{
+            text-decoration: underline;
+        };
+`
+
+export const DetailsLink = styled.a`
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1em;
+    line-height: 1em;
+    text-decoration: underline;
+
+    :hover{
+        cursor: pointer;
+    };
+
+    :active{
+        text-decoration: none;
+    };
 `

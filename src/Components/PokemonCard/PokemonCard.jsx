@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, ImageMark } from "./PokemonCardStyle"
+import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DetailsLink } from "./PokemonCardStyle"
 import axios from "axios"
 import { goToDetails } from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom"
@@ -126,8 +126,6 @@ export const PokemonCard = (props) => {
     return(
         <PokemonCardContainer typeColor={`${TypeList[0]}`}>
              <DataContainer>
-            
-               
                 <InfoContainer waterMark={pokeballWaterMark}>
                     <PokeId>#{id}</PokeId>
                     <PokeName>{pokemon.name.charAt(0).toLocaleUpperCase() + pokemon.name.slice(1)}</PokeName>
@@ -137,17 +135,12 @@ export const PokemonCard = (props) => {
                     </TypeContainer>
                 </InfoContainer> 
                 <Image src= {pokeImg} alt="pokemon_image"/>
-           
-               
             </DataContainer>
 
-            
-            
             <ButtonContainer>
-                <a onClick={()=> goToDetails(navigate)}>Detalhes</a>
-                <button>Capturar!</button>
+                <DetailsLink onClick={()=> goToDetails(navigate)}>Detalhes</DetailsLink>
+                <CatchButton>Capturar!</CatchButton>
             </ButtonContainer>
-            
         </PokemonCardContainer>
     )
 }
