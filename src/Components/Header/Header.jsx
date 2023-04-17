@@ -22,7 +22,7 @@ export const Header = (props) => {
         }else if (chooseHeader == 'Pokedex'){
             return(
                 <HeaderContainer>
-                    <a href="" onClick={() => goToPokemonList(navigate)}>
+                    <a onClick={() => goToPokemonList(navigate)}>
                         <img src={arrowSymbol}/>
                         Todos Pokémons
                     </a>
@@ -32,7 +32,7 @@ export const Header = (props) => {
         }else if(chooseHeader == 'PokemonDetail'){
             return(
                 <HeaderContainer>
-                    <a href=""  onClick={() => goToPokemonList(navigate)}>
+                    <a onClick={() => goToPokemonList(navigate)}>
                         <img src={arrowSymbol}/>
                         Todos Pokémons
                     </a>

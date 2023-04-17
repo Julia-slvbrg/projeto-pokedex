@@ -9,73 +9,41 @@ import { AppContainer } from "./AppStyle"
 import { BASE_URL } from "./constant/BASE_URL/BASE_URL"
 import Router from "./routes/Router"
 
+
+/* <!-- 
+
+  font-family: 'Inter', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
+ --> */
+
 function App() {
  
-  const [changePage, setChangePage] = useState("PokemonList")  
+    
   const [pokemonList, setPokemonList] = useState([])
 
 
-  /* const getAllPokemon = async () => {
+  const getAllPokemon = async () => {
     try {
         const response = await 
         axios.get(`${BASE_URL}pokemon?limit=81&offset=0`)
-
-        console.log(response) 
+        //console.log(response.data) 
         setPokemonList(response.data.results)
-
     } catch (error) {
         //console.log(error.response)
     }
   }
- */
-  
-  
 
-   
-  /* const selectPage = () =>{
-    if(changePage == "PokemonList"){
-      return(
-        <>
-          <Header 
-            chooseHeader={changePage} 
-            setChangePage={setChangePage}
-          />
-          <PokemonListPage
-            pokemonList={pokemonList}
-            setPokemonList={setPokemonList}
-            getAllPokemon={getAllPokemon}
-            setChangePage={setChangePage}
-          />
-        </>
-      )
-    }else if(changePage == "Pokedex"){
-      return(
-        <> 
-          <Header chooseHeader={changePage} />
-          <PokedexPage/>
-        </>
-      )
-    }else if(changePage == "PokemonDetail"){
-      return(
-        <>
-          <Header chooseHeader={changePage} />
-          <PokemonDetailPage/> 
-        </>
-      )
-    } 
-  };  */
-  
  
-
 
   return (
     <AppContainer>
       <GlobalStyled/>
-     {/*  {selectPage()}   */}
-    
-          
-      <Router/>
-
+      <Router 
+        pokemonList={pokemonList} 
+        getAllPokemon={getAllPokemon}
+      />
     </AppContainer>
     
   )
