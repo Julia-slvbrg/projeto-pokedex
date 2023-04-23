@@ -1,6 +1,4 @@
-import axios from 'axios'
-import { BASE_URL } from "../../constant/BASE_URL/BASE_URL"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import PokemonCard from "../../Components/PokemonCard/PokemonCard"
 import { PageContainer, PokemonListContainer } from './PokemonListStyle'
 import Header from '../../Components/Header/Header'
@@ -8,15 +6,16 @@ import Header from '../../Components/Header/Header'
 
 
 export const PokemonListPage = (props) =>{
-    const { pokemonList, getAllPokemon } = props
-   
-
+    const { pokemonList, getAllPokemon, catchPokemon, pokeCard, setPokeCard } = props
+    
+    
    
     useEffect(()=>{
         getAllPokemon() 
+        setPokeCard('list')
     }, []);
-    
 
+   
     return(
         
         <PageContainer>
@@ -27,9 +26,14 @@ export const PokemonListPage = (props) =>{
                         <PokemonCard
                             key={index}
                             pokemon={pokemon}
+                            catchPokemon={catchPokemon}
+                            pokeCard={pokeCard}
+                            
                         />
                     )
                 })} 
+                
+            
             </PokemonListContainer>
         </PageContainer>
     )
@@ -37,19 +41,3 @@ export const PokemonListPage = (props) =>{
 
 export default PokemonListPage
 
-
- /*   //Agora tudo isso aqui está chegando por props, essa função de getAllPokemon está declara no App 
-    
-    const [pokemonList, setPokemonList] = useState([])
-    const getAllPokemon = async () => {
-        try {
-            const response = await 
-            axios.get(`${BASE_URL}pokemon?limit=81&offset=0`)
-    
-            console.log(response) 
-            setPokemonList(response.data.results)
-    
-        } catch (error) {
-            //console.log(error.response)
-        }
-    } */

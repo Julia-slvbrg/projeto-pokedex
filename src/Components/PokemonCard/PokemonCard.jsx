@@ -22,15 +22,17 @@ import psychic from "../../assets/images/types/psychic.svg"
 import rock from "../../assets/images/types/rock.svg"
 import steel from "../../assets/images/types/steel.svg"
 import water from "../../assets/images/types/water.svg"
-
-
+import { BASE_URL } from "../../constant/BASE_URL/BASE_URL"
 
 
 export const PokemonCard = (props) => {
-    const { pokemon } = props
+    const { pokemon, catchPokemon, pokeCard} = props
+
     const [pokeImg, setPokeImg] = useState('')
     const [pokeId, setPokeId] = useState('')
     const [types, setTypes] = useState([])
+
+   
     
     const navigate = useNavigate("")
 
@@ -94,13 +96,11 @@ export const PokemonCard = (props) => {
             };
         };
     };
-
-   const getPokemonData = async () => {
+ 
+    const getPokemonData = async () => {
         try {
             const response = await
-            axios.get(`${pokemon.url}`)
-            //console.log(response)
-            //console.log(response.data)
+            axios.get(`${BASE_URL}pokemon/${pokemon.name}`)
             setPokeId(response.data.id)
             //setPokeImg(response.data.sprites.other.home.front_default)
             setPokeImg(response.data.sprites.other.dream_world.front_default)
@@ -109,19 +109,29 @@ export const PokemonCard = (props) => {
         } catch (error) {
             //console.log(error.response)
         }
-    };
-
+    }; 
+     
+    useEffect(() => {
+        getPokemonData()
+    }, [pokemon]);
+ 
     const TypeList = types.map((typeObjt) =>{
         return( typeObjt.type.name )
     });
     
     const id = pokeId.toString().length === 1? `0${pokeId.toString()}` : pokeId.toString();
    
-    useEffect(() => {
-        getPokemonData()
-    }, []);
-
-    
+    const selectButton = (pokeCard) => {
+        if(pokeCard === 'list'){
+            return(
+                <CatchButton onClick={()=> catchPokemon(pokemon)}>Capturar!</CatchButton>
+            )
+        }else if(pokeCard === 'pokedex'){
+            return(
+                <CatchButton >Excluir</CatchButton>
+            )
+        }
+    };
 
     return(
         <PokemonCardContainer typeColor={`${TypeList[0]}`}>
@@ -139,7 +149,8 @@ export const PokemonCard = (props) => {
 
             <ButtonContainer>
                 <DetailsLink onClick={()=> goToDetails(navigate)}>Detalhes</DetailsLink>
-                <CatchButton>Capturar!</CatchButton>
+                {selectButton(pokeCard)}
+                {/* <CatchButton onClick={()=> catchPokemon(pokemon)}>Capturar!</CatchButton> */}
             </ButtonContainer>
         </PokemonCardContainer>
     )
