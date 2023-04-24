@@ -5,17 +5,18 @@ import Header from '../../Components/Header/Header'
 
 
 
+
 export const PokemonListPage = (props) =>{
-    const { pokemonList, getAllPokemon, catchPokemon, pokeCard, setPokeCard } = props
+    const { pokemonList, catchPokemon, pokeCard, setPokeCard } = props
     
-    
+
    
     useEffect(()=>{
-        getAllPokemon() 
         setPokeCard('list')
     }, []);
 
    
+
     return(
         
         <PageContainer>
@@ -31,9 +32,7 @@ export const PokemonListPage = (props) =>{
                             
                         />
                     )
-                })} 
-                
-            
+                })}         
             </PokemonListContainer>
         </PageContainer>
     )
@@ -41,3 +40,35 @@ export const PokemonListPage = (props) =>{
 
 export default PokemonListPage
 
+
+/* 
+
+    const renderList = () => {
+        if(pokedex.length > 0){
+           
+            return (filteredList.map((pokemon, index)=>{
+                return(
+                    <PokemonCard
+                        key={index}
+                        pokemon={pokemon}
+                        catchPokemon={catchPokemon}
+                        pokeCard={pokeCard}
+                        
+                    />
+                )
+            }))
+        }else{
+           return( pokemonList.map((pokemon, index)=>{
+                return(
+                    <PokemonCard
+                        key={index}
+                        pokemon={pokemon}
+                        catchPokemon={catchPokemon}
+                        pokeCard={pokeCard}
+                        
+                    />
+                )
+            }))
+        }
+    }
+     */

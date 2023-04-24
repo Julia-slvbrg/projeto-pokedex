@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import Header from "../../Components/Header/Header"
 import PokemonCard from "../../Components/PokemonCard/PokemonCard"
+import { PageContainer, PokedexContainer } from "../PokedexPage/PokedexStyle"
 
 
 export const PokedexPage = (props) => {
@@ -13,19 +14,22 @@ export const PokedexPage = (props) => {
     
 
     return(
-        <>
+        <PageContainer>
             <Header chooseHeader={'Pokedex'} />
-            {pokedex.map((pokemon, index)=>{
-                return(
-                    <PokemonCard
-                        key={index}
-                        pokemon={pokemon}
-                        pokeCard={pokeCard}
+            <PokedexContainer>
+                {pokedex.map((pokemon, index)=>{
+                    return(
+                        <PokemonCard
+                            key={index}
+                            pokemon={pokemon}
+                            pokeCard={pokeCard}
                     
-                    />
-                )
-            })}
-        </>
+                        />
+                    )
+                })}
+            </PokedexContainer>
+            
+        </PageContainer>
 
     )
 }

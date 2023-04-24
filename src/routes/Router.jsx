@@ -6,7 +6,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage"
 
 
 export const Router = (props) => {
-    const { pokemonList, getAllPokemon, catchPokemon, pokeCard, setPokeCard, pokedex } = props
+    const { pokemonList, catchPokemon, pokeCard, setPokeCard, pokedex } = props
 
     return(
         <BrowserRouter>
@@ -16,7 +16,6 @@ export const Router = (props) => {
                     element={
                         <PokemonListPage 
                             pokemonList={pokemonList} 
-                            getAllPokemon={getAllPokemon}
                             catchPokemon={catchPokemon}
                             pokeCard={pokeCard}
                             setPokeCard={setPokeCard}

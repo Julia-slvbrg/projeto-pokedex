@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DetailsLink } from "./PokemonCardStyle"
+import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DeleteButton, DetailsLink } from "./PokemonCardStyle"
 import axios from "axios"
 import { goToDetails } from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom"
@@ -128,7 +128,7 @@ export const PokemonCard = (props) => {
             )
         }else if(pokeCard === 'pokedex'){
             return(
-                <CatchButton >Excluir</CatchButton>
+                <DeleteButton >Excluir</DeleteButton>
             )
         }
     };

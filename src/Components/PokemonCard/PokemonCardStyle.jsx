@@ -158,6 +158,28 @@ export const CatchButton = styled.button`
         };
 `
 
+export const DeleteButton = styled.button`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1em;
+    color: #FFFFFF;
+    line-height: 1em;
+    width: 10em;
+    height: 2.5em;
+    border-radius: .4em;
+    background-color: #FF6262;
+    border: 1px solid #FF6262;
+
+        :hover{
+            cursor: pointer;
+        };
+
+        :active{
+            text-decoration: underline;
+        };
+`
+
 export const DetailsLink = styled.a`
     color: #FFFFFF;
     font-family: 'Poppins', sans-serif;

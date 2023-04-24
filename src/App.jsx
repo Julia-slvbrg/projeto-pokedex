@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GlobalStyled } from './GlobalStyled'
 import { AppContainer } from "./AppStyle"
 import { BASE_URL } from "./constant/BASE_URL/BASE_URL"
@@ -17,6 +17,7 @@ import Router from "./routes/Router"
 function App() {   
   const [pokemonList, setPokemonList] = useState([]);
   const [pokedex, setPokedex] = useState([]);
+  const [filteredList, setFilteredList] = useState()
   const [pokeCard, setPokeCard] = useState('list')
 
  
@@ -24,19 +25,12 @@ function App() {
   const getAllPokemon = async () => {
     try {
         const response = await 
-        axios.get(`${BASE_URL}pokemon?limit=81&offset=0`)
+        axios.get(`${BASE_URL}pokemon?limit=25&offset=0`)
         //console.log(response.data) 
         setPokemonList(response.data.results)
     } catch (error) {
         //console.log(error.response)
     }
-  }
-
-  
-
-  const catchPokemon = (caughtPokemon) => {
-    setPokedex([... pokedex, caughtPokemon]);
-    filterPokemonList(caughtPokemon)
   }
 
   const filterPokemonList = (removePokemon) => {
@@ -45,9 +39,21 @@ function App() {
     }) 
     console.log(pokemonFiltered)
     setPokemonList(pokemonFiltered)
+  } 
+
+
+  const catchPokemon = (caughtPokemon) => {
+    setPokedex([... pokedex, caughtPokemon]);
+    filterPokemonList(caughtPokemon)
+ 
   }
 
-  
+  useEffect(()=>{
+    getAllPokemon() 
+  }, []);
+ 
+  //console.log('pokedex', pokedex)
+  //console.log('list', pokemonList)
 
 
   return (
@@ -55,7 +61,6 @@ function App() {
       <GlobalStyled/>
       <Router 
         pokemonList={pokemonList} 
-        getAllPokemon={getAllPokemon}
         catchPokemon={catchPokemon}
         pokeCard={pokeCard}
         setPokeCard={setPokeCard}
