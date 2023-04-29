@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DeleteButton, DetailsLink } from "./PokemonCardStyle"
 import axios from "axios"
-import { goToDetails } from "../../routes/coordinator"
-import { useNavigate } from "react-router-dom"
+import { goToDetails } from "../../Routes/coordinator"
+import { useLocation, useNavigate } from "react-router-dom"
 import pokeballWaterMark from "../../assets/images/pokeball-mark.svg"
 import bug from "../../assets/images/types/bug.svg"
 import dark from "../../assets/images/types/dark.svg"
@@ -26,16 +26,21 @@ import { BASE_URL } from "../../constant/BASE_URL/BASE_URL"
 
 
 export const PokemonCard = (props) => {
-    const { pokemon, catchPokemon, pokeCard} = props
+    const { pokemon, catchPokemon, removePokemon} = props;
 
-    const [pokeImg, setPokeImg] = useState('')
-    const [pokeId, setPokeId] = useState('')
-    const [types, setTypes] = useState([])
+    const location = useLocation();
+    const navigate = useNavigate();
 
-   
+    const [pokeImg, setPokeImg] = useState('');
+    const [pokeId, setPokeId] = useState('');
+    const [types, setTypes] = useState([]);
+
+    useEffect(() => {
+        getPokemonData()
+    }, [pokemon]);
     
-    const navigate = useNavigate("")
 
+    //função para renderizar a imagem específica do pokemon do card
     const getTypeImg =(type) =>{
         if(type){
             switch(type){
@@ -97,6 +102,7 @@ export const PokemonCard = (props) => {
         };
     };
  
+   //função para pegar os dados de um pokemon específico da API
     const getPokemonData = async () => {
         try {
             const response = await
@@ -111,24 +117,24 @@ export const PokemonCard = (props) => {
         }
     }; 
      
-    useEffect(() => {
-        getPokemonData()
-    }, [pokemon]);
  
+    //função para pegar os dois primeiros tipos de cada pokemon
     const TypeList = types.map((typeObjt) =>{
         return( typeObjt.type.name )
     });
     
+    //função para mostrar o id do pokemon conforme o formato requerido
     const id = pokeId.toString().length === 1? `0${pokeId.toString()}` : pokeId.toString();
    
-    const selectButton = (pokeCard) => {
-        if(pokeCard === 'list'){
+    //função para mostrar o botão específico da página, podendo ser o de Capturar ou Excluir
+    const selectButton = () => {
+        if(location.pathname === '/'){
             return(
                 <CatchButton onClick={()=> catchPokemon(pokemon)}>Capturar!</CatchButton>
             )
-        }else if(pokeCard === 'pokedex'){
+        }else if(location.pathname === '/pokedex'){
             return(
-                <DeleteButton >Excluir</DeleteButton>
+                <DeleteButton onClick={()=> removePokemon(pokemon)}>Excluir</DeleteButton>
             )
         }
     };
@@ -149,8 +155,7 @@ export const PokemonCard = (props) => {
 
             <ButtonContainer>
                 <DetailsLink onClick={()=> goToDetails(navigate)}>Detalhes</DetailsLink>
-                {selectButton(pokeCard)}
-                {/* <CatchButton onClick={()=> catchPokemon(pokemon)}>Capturar!</CatchButton> */}
+                {selectButton()}
             </ButtonContainer>
         </PokemonCardContainer>
     )

@@ -1,21 +1,21 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import Header from "../../Components/Header/Header"
 import PokemonCard from "../../Components/PokemonCard/PokemonCard"
 import { PageContainer, PokedexContainer } from "../PokedexPage/PokedexStyle"
+import { GlobalContext } from "../../Contexts/GlobalContext"
 
 
-export const PokedexPage = (props) => {
+export const PokedexPage = () => {
 
-    const { pokedex, pokeCard, setPokeCard } = props
+    const context = useContext(GlobalContext);
+    const { pokedex, pokeCard, removePokemon } = context;
 
-    useEffect(()=>{
-        setPokeCard('pokedex')
-    }, [])
+  
     
 
     return(
         <PageContainer>
-            <Header chooseHeader={'Pokedex'} />
+            <Header/>
             <PokedexContainer>
                 {pokedex.map((pokemon, index)=>{
                     return(
@@ -23,6 +23,7 @@ export const PokedexPage = (props) => {
                             key={index}
                             pokemon={pokemon}
                             pokeCard={pokeCard}
+                            removePokemon={removePokemon}
                     
                         />
                     )

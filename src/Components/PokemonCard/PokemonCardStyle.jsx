@@ -4,7 +4,7 @@ import pokeballWaterMark from "../../assets/images/pokeball-mark.svg"
 export const PokemonCardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid transparent;
     height: 12em;
     width: 27em;
     margin : 1.5em 0 1.5em 0;
