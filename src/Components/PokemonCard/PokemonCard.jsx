@@ -26,7 +26,7 @@ import { BASE_URL } from "../../constant/BASE_URL/BASE_URL"
 
 
 export const PokemonCard = (props) => {
-    const { pokemon, catchPokemon, removePokemon} = props;
+    const { pokemon, catchPokemon, removePokemon, setPokemonDetail/* , pokemonDetail */} = props;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -118,8 +118,8 @@ export const PokemonCard = (props) => {
     }; 
      
  
-    //função para pegar os dois primeiros tipos de cada pokemon
-    const TypeList = types.map((typeObjt) =>{
+    //função para mapear os tipos de cada pokemon, para pegar os dois primeiros
+    const typeList = types.map((typeObjt) =>{
         return( typeObjt.type.name )
     });
     
@@ -139,22 +139,31 @@ export const PokemonCard = (props) => {
         }
     };
 
+   
+
     return(
-        <PokemonCardContainer typeColor={`${TypeList[0]}`}>
+        <PokemonCardContainer typeColor={`${typeList[0]}`}>
              <DataContainer>
                 <InfoContainer waterMark={pokeballWaterMark}>
                     <PokeId>#{id}</PokeId>
                     <PokeName>{pokemon.name.charAt(0).toLocaleUpperCase() + pokemon.name.slice(1)}</PokeName>
                     <TypeContainer>
-                        {getTypeImg(TypeList[0])}
-                        {getTypeImg(TypeList[1])}
+                        {getTypeImg(typeList[0])}
+                        {getTypeImg(typeList[1])}
                     </TypeContainer>
                 </InfoContainer> 
                 <Image src= {pokeImg} alt="pokemon_image"/>
             </DataContainer>
 
             <ButtonContainer>
-                <DetailsLink onClick={()=> goToDetails(navigate)}>Detalhes</DetailsLink>
+                <DetailsLink 
+                    onClick={()=> {
+                        setPokemonDetail(pokemon)
+                        goToDetails(navigate) 
+                    }}
+                >
+                    Detalhes
+                </DetailsLink>
                 {selectButton()}
             </ButtonContainer>
         </PokemonCardContainer>

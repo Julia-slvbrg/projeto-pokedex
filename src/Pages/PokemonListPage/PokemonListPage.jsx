@@ -10,7 +10,7 @@ import { GlobalContext } from "../../Contexts/GlobalContext"
 export const PokemonListPage = () =>{
 
     const context = useContext(GlobalContext);
-    const { pokemonList, catchPokemon, pokedex } = context
+    const { pokemonList, catchPokemon, pokedex, setPokemonDetail/* , pokemonDetail */ } = context
     
     
     const filterPokemonList = () => {
@@ -30,7 +30,8 @@ export const PokemonListPage = () =>{
                             key={index}
                             pokemon={pokemon}
                             catchPokemon={catchPokemon}
-                            
+                            setPokemonDetail={setPokemonDetail}
+                           /*  pokemonDetail={pokemonDetail} */
                             
                         />
                     )

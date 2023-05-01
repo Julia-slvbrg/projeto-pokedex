@@ -8,7 +8,7 @@ import { GlobalContext } from "../../Contexts/GlobalContext"
 export const PokedexPage = () => {
 
     const context = useContext(GlobalContext);
-    const { pokedex, pokeCard, removePokemon } = context;
+    const { pokedex, pokeCard, removePokemon, setPokemonDetail/* , pokemonDetail */ } = context;
 
   
     
@@ -24,6 +24,8 @@ export const PokedexPage = () => {
                             pokemon={pokemon}
                             pokeCard={pokeCard}
                             removePokemon={removePokemon}
+                            setPokemonDetail={setPokemonDetail}
+                            /* pokemonDetail={pokemonDetail} */
                     
                         />
                     )

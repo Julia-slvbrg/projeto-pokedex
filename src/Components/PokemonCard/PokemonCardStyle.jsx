@@ -21,13 +21,13 @@ export const PokemonCardContainer = styled.div`
                 return '#004170' 
                 break;
             case 'electric':
-                return '#d7ba01bc'
+                return '#E2BF65'
                 break;
             case 'fairy':
                 return '#e1abdd' 
                 break;
             case 'fighting':
-                return '#eb2e64d9'
+                return '#C22E28'
                 break;
             case 'fire':
                 return '#EAAB7D' 
@@ -51,7 +51,7 @@ export const PokemonCardContainer = styled.div`
                 return '#BF9762' 
                 break;
             case 'poison':
-                return '#d466d6a7'
+                return '#A33EA1'
                 break;
             case 'psychic':
                 return '#d1575bef'

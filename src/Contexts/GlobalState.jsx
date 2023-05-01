@@ -9,7 +9,8 @@ export default function GlobalState({children}){
 
     const [pokemonList, setPokemonList] = useState([]);
     const [pokedex, setPokedex] = useState([]);
-    const [filteredList, setFilteredList] = useState()
+    const [filteredList, setFilteredList] = useState();
+    const [pokemonDetail, setPokemonDetail] = useState([]);
     
     useEffect(()=>{
         getAllPokemon() 
@@ -41,12 +42,18 @@ export default function GlobalState({children}){
         setPokedex(pokemonInPokedex)
     }
 
+
+
     const data ={
         pokemonList,
         pokedex,
         catchPokemon,
-        removePokemon
+        removePokemon,
+        setPokemonDetail,
+        pokemonDetail
     }
+
+
 
     return(
         <GlobalContext.Provider value={data}>
