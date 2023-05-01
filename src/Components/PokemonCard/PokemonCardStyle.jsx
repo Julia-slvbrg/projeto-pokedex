@@ -4,7 +4,7 @@ import pokeballWaterMark from "../../assets/images/pokeball-mark.svg"
 export const PokemonCardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid transparent;
     height: 12em;
     width: 27em;
     margin : 1.5em 0 1.5em 0;
@@ -21,13 +21,13 @@ export const PokemonCardContainer = styled.div`
                 return '#004170' 
                 break;
             case 'electric':
-                return '#d7ba01bc'
+                return '#E2BF65'
                 break;
             case 'fairy':
                 return '#e1abdd' 
                 break;
             case 'fighting':
-                return '#eb2e64d9'
+                return '#C22E28'
                 break;
             case 'fire':
                 return '#EAAB7D' 
@@ -51,7 +51,7 @@ export const PokemonCardContainer = styled.div`
                 return '#BF9762' 
                 break;
             case 'poison':
-                return '#d466d6a7'
+                return '#A33EA1'
                 break;
             case 'psychic':
                 return '#d1575bef'
@@ -148,6 +148,28 @@ export const CatchButton = styled.button`
     border-radius: .4em;
     background-color: #DDDDDD;
     border: 1px solid #DDDDDD;
+
+        :hover{
+            cursor: pointer;
+        };
+
+        :active{
+            text-decoration: underline;
+        };
+`
+
+export const DeleteButton = styled.button`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1em;
+    color: #FFFFFF;
+    line-height: 1em;
+    width: 10em;
+    height: 2.5em;
+    border-radius: .4em;
+    background-color: #FF6262;
+    border: 1px solid #FF6262;
 
         :hover{
             cursor: pointer;

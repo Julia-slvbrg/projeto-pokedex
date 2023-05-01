@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 
 export const PageContainer = styled.div`
-
+    min-height: 100vh;
+    max-height: auto;
 `
 
 
@@ -11,8 +12,6 @@ export const PokemonListContainer = styled.div`
     flex-direction: row;
     gap: 1em;
     flex-wrap: wrap;
-    margin: 4em;
-    justify-content: space-around;
-   /*  background-color: aqua; */
-    
+    margin-top: 3em;
+    justify-content: space-around;    
 `
