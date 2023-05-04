@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import Header from "../../Components/Header/Header"
 import { GlobalContext } from "../../Contexts/GlobalContext"
+import { PageContainer, DetText, CardContainer, ImageContainer, PokeImg, StatsContainer, Title, StatsParams, StatsText, StatsNumber, StatsBar, TotalStatsBar, InfoContainer, ProfileImg, MovesContainer } from "./PokemonDetailStyle";
 import axios from "axios";
 import pokeballWaterMark from "../../assets/images/pokeball-mark.svg"
 import bug from "../../assets/images/types/bug.svg"
@@ -21,11 +22,12 @@ import psychic from "../../assets/images/types/psychic.svg"
 import rock from "../../assets/images/types/rock.svg"
 import steel from "../../assets/images/types/steel.svg"
 import water from "../../assets/images/types/water.svg"
+import { BASE_URL } from "../../constant/BASE_URL/BASE_URL";
 
 
 export const PokemonDetailPage = () =>{
     const context = useContext(GlobalContext);
-    const {pokemonDetail} = context;
+    const {pokemonDetail, setPokemonDetail} = context;
 
     const [pokeImgFront, setPokeImgFront] = useState('');
     const [pokeImgBack, setPokeImgBack] = useState('');
@@ -34,7 +36,7 @@ export const PokemonDetailPage = () =>{
     const [stats, setStats] = useState([]);
     const [pokeImg, setPokeImg] = useState('');
     const [moves, setMoves] = useState([]);
-
+    const [nom, setNom] = useState('')
     
    //console.log(pokemonDetail.name)
     
@@ -106,14 +108,16 @@ export const PokemonDetailPage = () =>{
     };
 
 
-
     const getPokeDetails = async () => {
         try {
             const response = await 
-            axios.get(`${pokemonDetail.url}`)
+           /*  axios.get(`${pokemonDetail.url}`) */
+
+            axios.get(`${BASE_URL}pokemon/${pokemonDetail.name}`)
+
             console.log('det', response.data)
             setPokeImgFront(response.data.sprites.front_default)
-            setPokeImgBack(response.data.sprites.back)
+            setPokeImgBack(response.data.sprites.back_default)
             setPokeId(response.data.id)
             setTypes(response.data.types)
             setStats(response.data.stats)
@@ -123,7 +127,7 @@ export const PokemonDetailPage = () =>{
         } catch (error) {
             console.log(error.response)
         }
-    }
+    };
 
     //função para mostrar o id do pokemon conforme o formato requerido
     const id = pokeId.toString().length === 1? `0${pokeId.toString()}` : pokeId.toString();
@@ -132,52 +136,157 @@ export const PokemonDetailPage = () =>{
     const typeList = types.map((typeObjt) =>{
         return( typeObjt.type.name )
     });
-     
+
+    
+   const formatNoun = (noun) => {
+        setNom(noun)
+        console.log(nom)
+       return nom.charAt(0).toLocaleUpperCase() + nom.slice(1)
+
+    }    
+   
+    function capitalizeFirstLetter(string) {
+        return string[0].toUpperCase() + string.slice(1);
+    }
+
+
+    //Função para criar um array somente com os valores dos stats 
+    const arrStats = stats.map((obj) => {
+        return (obj.base_stat)
+    });
+
+    //Função para retornar o total das stats 
+    const getSum = () => {
+        if(arrStats.length > 0){
+            const sum = arrStats.reduce((accumulator, currentValue)=> accumulator + currentValue);
+            return sum
+        } ;
+    };
+
+    //Função para criar um array somente com os nomes dos movimentos
+    const arrMoves = moves.map((obj)=>{
+        return (obj.move.name)
+    });
+
+    const firstMove = arrMoves[0];
+   
+    //const firstMoveUpper = firstMove.charAt(0).toLocaleUpperCase() + firstMove.slice(1);
+    const secondMove = arrMoves[1]
     
 
+    console.log(moves)
+    console.log('Arrmoves', arrMoves)
+   
+    
+    
     return(
         <>
-            <Header/>
-            <h1>Detalhes</h1>
+         <Header/>
+        <PageContainer>
+           
+            <DetText>Detalhes</DetText>
 
-            <>
-                <p>imagem frontal</p>
-                <p>imagem das costas</p>
+            <CardContainer typeColor={`${typeList[0]}`}>
+                <ImageContainer>
+               
+                    <PokeImg src={pokeImgFront} alt="poke-img-front"/>
+                    <PokeImg src={pokeImgBack} alt="poke-img-back"/>                        
+                   
+                </ImageContainer>
+                
+                
+                <StatsContainer>
+                    <Title>Base Stats</Title>
+                    <StatsParams>
+                        <StatsText>HP </StatsText>
+                        <StatsNumber>{arrStats[0]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[0]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
 
-                <>
-                    <h2>Base Stats</h2>
-                    <p>HP</p>
-                    <p>Attack</p>
-                    <p>Defense</p>
-                    <p>Sp. Atk</p>
-                    <p>Sp. Def</p>
-                    <p>Speed</p>
-                    <p>Total</p>
-                </>
+                    <StatsParams>
+                        <StatsText>Attack </StatsText>
+                        <StatsNumber>{arrStats[1]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[1]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
 
-                <>
+                    <StatsParams>
+                        <StatsText>Defense </StatsText>
+                        <StatsNumber>{arrStats[2]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[2]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+
+                    <StatsParams>
+                        <StatsText>Sp. Atk </StatsText>
+                        <StatsNumber>{arrStats[3]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[3]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+
+                    <StatsParams>
+                        <StatsText>Sp. Def </StatsText>
+                        <StatsNumber>{arrStats[4]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[4]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+
+                    <StatsParams>
+                        <StatsText>Speed </StatsText>
+                        <StatsNumber>{arrStats[5]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[5]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+
+                    <StatsParams>
+                        <StatsText>Total </StatsText>
+                        <StatsNumber>{getSum()}</StatsNumber>
+                    </StatsParams>
+
+                    
+                </StatsContainer>
+
+                <InfoContainer>
                     <p>#{id}</p>
                     <p>{pokemonDetail.name.charAt(0).toLocaleUpperCase() + pokemonDetail.name.slice(1)}</p>
                     <p>
                         {getTypeImg(typeList[0])}
                         {getTypeImg(typeList[1])}
                     </p>
-                    <p>imagem</p>
-                </>
+                    <ProfileImg src={pokeImg} alt="pokemon-img"/>
 
-                <>
-                    <h2>Moves:</h2>
-                    <p>move1</p>
-                    <p>move2</p>
-                    <p>move3</p>
-                    <p>move4</p>
-                </>
-            </>
-            
+                    <MovesContainer>
+                        <Title>Moves:</Title>
+                        <p>{arrMoves[0]}</p>
+                        <p>{arrMoves[1]}</p>
+                        <p>{arrMoves[2]}</p>
+                        <p>{arrMoves[3]}</p>
+                        <p>{}</p>
+                        <p>{secondMove}</p>
+                    </MovesContainer>
+
+
+                </InfoContainer>
+
+                
+            </CardContainer>
+
+
+        </PageContainer>
             
         </>
+            
+        
         
     )
 }
 
 export default PokemonDetailPage
+

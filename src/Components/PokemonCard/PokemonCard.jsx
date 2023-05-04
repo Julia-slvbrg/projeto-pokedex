@@ -139,6 +139,7 @@ export const PokemonCard = (props) => {
         }
     };
 
+ 
    
 
     return(

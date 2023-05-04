@@ -14,6 +14,7 @@ export default function GlobalState({children}){
     
     useEffect(()=>{
         getAllPokemon() 
+        setPokemonDetail()
     }, []);
  
   

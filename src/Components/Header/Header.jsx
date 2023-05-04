@@ -25,7 +25,7 @@ export const Header = () => {
                 return(
                     <HeaderContainer>
                         <NavLink onClick={() => goToPokemonList(navigate)}>
-                            <ArrowIcon src={arrowSymbol}/>
+                        <ArrowIcon src={arrowSymbol}/>
                             Todos Pokémons
                         </NavLink>
                         <Image src={headerLogo} />
@@ -37,7 +37,7 @@ export const Header = () => {
                 return(
                     <HeaderContainer>
                         <NavLink onClick={() => goBack(navigate)}>
-                            <ArrowIcon src={arrowSymbol}/>
+                        <ArrowIcon src={arrowSymbol}/>
                             Todos Pokémons
                         </NavLink>
                         <Image src={headerLogo} />
