@@ -189,11 +189,11 @@ export const DetailsLink = styled.a`
     line-height: 1em;
     text-decoration: underline;
 
-    :hover{
+    &:hover{
         cursor: pointer;
     };
 
-    :active{
+    &:active{
         text-decoration: none;
     };
 `

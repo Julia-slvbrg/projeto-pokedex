@@ -2,13 +2,15 @@ import { HeaderContainer, Image, PokedexButton, NavLink, ArrowIcon } from "./Hea
 import headerLogo from "../../assets/images/pokemons-logo-header.svg"
 import arrowSymbol from "../../assets/images/eva_arrow-ios-back-outline.svg"
 import {goToPokemonList, goToPokedex, goBack} from "../../Routes/coordinator"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
+import { useContext } from "react"
 
 
-export const Header = () => {
+export const Header = ({ pokemonToDet }) => {
     const navigate = useNavigate()
     const location = useLocation();
-    
+   
+  
 
     const chooseHeader = () => {
         switch(location.pathname){
@@ -33,7 +35,7 @@ export const Header = () => {
                     </HeaderContainer>
                 );
                 break
-            case '/pokedex/details':
+            case  `/pokedex/details/${pokemonToDet}`:
                 return(
                     <HeaderContainer>
                         <NavLink onClick={() => goBack(navigate)}>
@@ -46,7 +48,9 @@ export const Header = () => {
                 );
                 break
         }
-    };
+    }; 
+    
+
 
    
     return(
@@ -59,3 +63,6 @@ export const Header = () => {
 
 
 export default Header
+
+
+//'/pokedex/details/:pokemonName'

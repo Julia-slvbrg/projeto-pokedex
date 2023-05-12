@@ -28,10 +28,10 @@ export const NavLink = styled.a`
     flex-direction: row;
     align-items: center;
 
-    :hover{
+    &:hover{
         cursor: pointer;
     };
-    :active{
+    &:active{
         text-decoration: none;
     };
 `
@@ -54,5 +54,12 @@ export const PokedexButton = styled.button`
     border: #FFFFFF 1px;
     border-radius: .3em;
     grid-column: 3/4;
+
+    &:hover{
+        cursor: pointer;
+    };
+    &:active{
+        text-decoration: none;
+    };
 `
     

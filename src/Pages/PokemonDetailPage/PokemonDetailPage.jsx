@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import Header from "../../Components/Header/Header"
 import { GlobalContext } from "../../Contexts/GlobalContext"
-import { PageContainer, DetText, CardContainer, ImageContainer, PokeImg, StatsContainer, Title, StatsParams, StatsText, StatsNumber, StatsBar, TotalStatsBar, InfoContainer, ProfileImg, MovesContainer } from "./PokemonDetailStyle";
+import { PageContainer, DetText, CardContainer, ImageContainer, PokeImg, StatsContainer, Title, StatsParams, StatsText, StatsNumber, StatsBar, TotalStatsBar, InfoContainer, ProfileImg, MovesContainer, StatsParamsTotal, Moves, PokeId, PokeName, TypeContainer } from "./PokemonDetailStyle";
 import axios from "axios";
 import pokeballWaterMark from "../../assets/images/pokeball-mark.svg"
 import bug from "../../assets/images/types/bug.svg"
@@ -23,11 +23,13 @@ import rock from "../../assets/images/types/rock.svg"
 import steel from "../../assets/images/types/steel.svg"
 import water from "../../assets/images/types/water.svg"
 import { BASE_URL } from "../../constant/BASE_URL/BASE_URL";
+import { useParams } from "react-router-dom";
 
 
 export const PokemonDetailPage = () =>{
     const context = useContext(GlobalContext);
-    const {pokemonDetail, setPokemonDetail} = context;
+    const { pokemonName } = useParams();
+    const {pokemonDetail, setPokemonDetail, setPokemonToDet, pokemonToDet} = context;
 
     const [pokeImgFront, setPokeImgFront] = useState('');
     const [pokeImgBack, setPokeImgBack] = useState('');
@@ -107,7 +109,8 @@ export const PokemonDetailPage = () =>{
         };
     };
 
-
+    //nesse tipo de requisição try/catch, dá também pra colocar um .finally no final. Esse finally vai executar não importando se a função entrou no try ou no catch
+    //A diferença entre try/catch e try/then => o try/catch vai executando até aparecer o final ou até aparecer um erro, aí se aparecer um erro ele pula pro catch. Já no try/then, o try só executa se não tiver NENHUM ERRO, se tiver algum erro ele pula direto para o then.
     const getPokeDetails = async () => {
         try {
             const response = await 
@@ -181,9 +184,9 @@ export const PokemonDetailPage = () =>{
     
     return(
         <>
-         <Header/>
-        <PageContainer>
-           
+            <Header pokemonToDet={pokemonToDet}/>
+            <PageContainer>
+        
             <DetText>Detalhes</DetText>
 
             <CardContainer typeColor={`${typeList[0]}`}>
@@ -198,7 +201,7 @@ export const PokemonDetailPage = () =>{
                 <StatsContainer>
                     <Title>Base Stats</Title>
                     <StatsParams>
-                        <StatsText>HP </StatsText>
+                        <StatsText>HP</StatsText>
                         <StatsNumber>{arrStats[0]}</StatsNumber>
                         <TotalStatsBar>
                             <StatsBar status={arrStats[0]}></StatsBar>
@@ -206,7 +209,7 @@ export const PokemonDetailPage = () =>{
                     </StatsParams>
 
                     <StatsParams>
-                        <StatsText>Attack </StatsText>
+                        <StatsText>Attack</StatsText>
                         <StatsNumber>{arrStats[1]}</StatsNumber>
                         <TotalStatsBar>
                             <StatsBar status={arrStats[1]}></StatsBar>
@@ -214,7 +217,7 @@ export const PokemonDetailPage = () =>{
                     </StatsParams>
 
                     <StatsParams>
-                        <StatsText>Defense </StatsText>
+                        <StatsText>Defense</StatsText>
                         <StatsNumber>{arrStats[2]}</StatsNumber>
                         <TotalStatsBar>
                             <StatsBar status={arrStats[2]}></StatsBar>
@@ -222,7 +225,7 @@ export const PokemonDetailPage = () =>{
                     </StatsParams>
 
                     <StatsParams>
-                        <StatsText>Sp. Atk </StatsText>
+                        <StatsText>Sp. Atk</StatsText>
                         <StatsNumber>{arrStats[3]}</StatsNumber>
                         <TotalStatsBar>
                             <StatsBar status={arrStats[3]}></StatsBar>
@@ -230,7 +233,7 @@ export const PokemonDetailPage = () =>{
                     </StatsParams>
 
                     <StatsParams>
-                        <StatsText>Sp. Def </StatsText>
+                        <StatsText>Sp. Def</StatsText>
                         <StatsNumber>{arrStats[4]}</StatsNumber>
                         <TotalStatsBar>
                             <StatsBar status={arrStats[4]}></StatsBar>
@@ -238,38 +241,38 @@ export const PokemonDetailPage = () =>{
                     </StatsParams>
 
                     <StatsParams>
-                        <StatsText>Speed </StatsText>
+                        <StatsText>Speed</StatsText>
                         <StatsNumber>{arrStats[5]}</StatsNumber>
                         <TotalStatsBar>
                             <StatsBar status={arrStats[5]}></StatsBar>
                         </TotalStatsBar>
                     </StatsParams>
 
-                    <StatsParams>
-                        <StatsText>Total </StatsText>
-                        <StatsNumber>{getSum()}</StatsNumber>
-                    </StatsParams>
+                    <StatsParamsTotal>
+                        <StatsText>Total</StatsText>
+                        <StatsNumber><b>{getSum()}</b></StatsNumber>
+                        <TotalStatsBar></TotalStatsBar>
+                    </StatsParamsTotal>
 
                     
                 </StatsContainer>
 
-                <InfoContainer>
-                    <p>#{id}</p>
-                    <p>{pokemonDetail.name.charAt(0).toLocaleUpperCase() + pokemonDetail.name.slice(1)}</p>
-                    <p>
+                <InfoContainer waterMark={pokeballWaterMark}>
+                    <PokeId>#{id}</PokeId>
+                    <PokeName>{pokemonDetail.name.charAt(0).toLocaleUpperCase() + pokemonDetail.name.slice(1)}</PokeName>
+                    <TypeContainer>
                         {getTypeImg(typeList[0])}
                         {getTypeImg(typeList[1])}
-                    </p>
+                    </TypeContainer>
                     <ProfileImg src={pokeImg} alt="pokemon-img"/>
 
                     <MovesContainer>
                         <Title>Moves:</Title>
-                        <p>{arrMoves[0]}</p>
-                        <p>{arrMoves[1]}</p>
-                        <p>{arrMoves[2]}</p>
-                        <p>{arrMoves[3]}</p>
-                        <p>{}</p>
-                        <p>{secondMove}</p>
+                        <Moves>{arrMoves[0]}</Moves>
+                        <Moves>{arrMoves[1]}</Moves>
+                        <Moves>{arrMoves[2]}</Moves>
+                        <Moves>{arrMoves[3]}</Moves>
+                        
                     </MovesContainer>
 
 

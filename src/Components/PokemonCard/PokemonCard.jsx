@@ -26,7 +26,7 @@ import { BASE_URL } from "../../constant/BASE_URL/BASE_URL"
 
 
 export const PokemonCard = (props) => {
-    const { pokemon, catchPokemon, removePokemon, setPokemonDetail/* , pokemonDetail */} = props;
+    const { pokemon, catchPokemon, removePokemon, setPokemonDetail/* , pokemonDetail */, setPokemonToDet} = props;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -139,7 +139,11 @@ export const PokemonCard = (props) => {
         }
     };
 
- 
+ const onClickDetails = () => {
+    setPokemonDetail(pokemon)
+    goToDetails(navigate, pokemon.name) 
+    setPokemonToDet(pokemon.name)
+ }
    
 
     return(
@@ -159,8 +163,7 @@ export const PokemonCard = (props) => {
             <ButtonContainer>
                 <DetailsLink 
                     onClick={()=> {
-                        setPokemonDetail(pokemon)
-                        goToDetails(navigate) 
+                        onClickDetails()
                     }}
                 >
                     Detalhes

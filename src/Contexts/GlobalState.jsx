@@ -11,6 +11,7 @@ export default function GlobalState({children}){
     const [pokedex, setPokedex] = useState([]);
     const [filteredList, setFilteredList] = useState();
     const [pokemonDetail, setPokemonDetail] = useState([]);
+    const [pokemonToDet, setPokemonToDet] = useState('');
     
     useEffect(()=>{
         getAllPokemon() 
@@ -43,6 +44,7 @@ export default function GlobalState({children}){
         setPokedex(pokemonInPokedex)
     }
 
+    
 
 
     const data ={
@@ -51,7 +53,10 @@ export default function GlobalState({children}){
         catchPokemon,
         removePokemon,
         setPokemonDetail,
-        pokemonDetail
+        pokemonDetail,
+        pokemonToDet,
+        setPokemonToDet
+
     }
 
 

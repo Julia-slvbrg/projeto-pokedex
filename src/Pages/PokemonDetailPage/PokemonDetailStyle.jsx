@@ -9,6 +9,7 @@ export const PageContainer = styled.div`
     justify-content: flex-start;
     gap: 3em;
     padding: 2.5em 2em 2em 4em;
+    
 
 `
 
@@ -101,19 +102,17 @@ export const ImageContainer = styled.div`
     gap: 2em;
 `
 
-
-
 export const PokeImg = styled.img`
     background-color: #FFFFFF;;
-    width: 14em;
-    height: 14em;
-    border-radius: .8em;
+    width: 210px;
+    height: 210px;
+    border-radius: .5em;
 `
 
 export const StatsContainer = styled.div`
     background-color: #FFFFFF;
-    width: 20em;
-    border-radius: 1.8em;
+    width: 400px;
+    border-radius: .5em;
     padding: 2em;
 `
 
@@ -124,12 +123,25 @@ export const Title = styled.h2`
     font-weight: 800;
     font-size: 1.3em;
     line-height: 1em;
+    margin-bottom: 18px;
 `
 
 export const StatsParams = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+    border-top: 2px solid #f0f1f0;
+`
+
+export const StatsParamsTotal = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 1px solid #f0f1f0;
+    border-bottom: 1px solid #f0f1f0;
     gap: 1em;
 `
 
@@ -139,36 +151,65 @@ export const StatsText = styled.p`
     text-align: right;
     font-size: .8em;
     line-height: 3em;
-    width: 4em;
-    background-color: aqua;
+    width: 100px;
+    //background-color: aqua;
     color: #8c8787;
 `
 
 export const StatsNumber = styled.p`
-font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     text-align: right;
     font-size: .8em;
     font-weight: 400;
-    line-height: 3em;
+    line-height: 10px;
     color: #000000;
 `
 
 export const TotalStatsBar = styled.div`
     width: 30em;
-    background-color: red;
+    //background-color: red;
 `
 
 export const StatsBar = styled.button`
-    background-color: green;
     width: ${(props)=>props.status}%;
-   
-
+    background-color: ${(props)=> props.status < 50 ? '#ff7b2e' : '#ffdd69'};
+    border: 0;
+    border-radius: .2em;
+    height: 1em;
 `
 
 export const InfoContainer = styled.div`
-    background-color: red;
+    //background-color: red;
 
+`
+export const PokeId = styled.h3`
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: .8em;
+    line-height: 1em;
+    color: #FFFFFF;
+`
+
+export const PokeName = styled.h1`
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5em;
+    line-height: 1em;
+    color: #FFFFFF;
+    margin: .2em 0 .6em 0;
+`
+
+export const TypeContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .5em;
+    margin-left: -.75em;
+    scale: .9;
 `
 
 export const ProfileImg = styled.img`
@@ -178,4 +219,28 @@ export const ProfileImg = styled.img`
 
 export const MovesContainer = styled.div`
     background-color: #FFFFFF;
+    border-radius: .5em;
+    height: 365px;
+    width: 250px;
+    padding: 1.5em 0 0 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+`
+
+export const Moves = styled.p`
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: .8em;
+    line-height: 35px;
+    color: #000000;
+    background-color:#ECECEC;
+    border: 1.5px dashed #dcdcdc;
+    border-radius: .8em;
+    margin-bottom: 1.2em;
+    padding: 2px;
+    min-width: fit-content;
+    max-width: 40px;
+    text-align: center;
 `

@@ -8,14 +8,14 @@ import { GlobalContext } from "../../Contexts/GlobalContext"
 export const PokedexPage = () => {
 
     const context = useContext(GlobalContext);
-    const { pokedex, pokeCard, removePokemon, setPokemonDetail/* , pokemonDetail */ } = context;
+    const { pokedex, pokeCard, removePokemon, setPokemonDetail/* , pokemonDetail */,setPokemonToDet, pokemonToDet } = context;
 
   
     
 
     return(
         <PageContainer>
-            <Header/>
+            <Header pokemonToDet={pokemonToDet}/>
             <PokedexContainer>
                 {pokedex.map((pokemon, index)=>{
                     return(
@@ -26,7 +26,7 @@ export const PokedexPage = () => {
                             removePokemon={removePokemon}
                             setPokemonDetail={setPokemonDetail}
                             /* pokemonDetail={pokemonDetail} */
-                    
+                            setPokemonToDet={setPokemonToDet}
                         />
                     )
                 })}
