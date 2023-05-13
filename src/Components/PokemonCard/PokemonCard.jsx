@@ -1,32 +1,31 @@
-import { useEffect, useState } from "react"
-import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DeleteButton, DetailsLink } from "./PokemonCardStyle"
-import axios from "axios"
-import { goToDetails } from "../../Routes/coordinator"
-import { useLocation, useNavigate } from "react-router-dom"
-import pokeballWaterMark from "../../assets/images/pokeball-mark.svg"
-import bug from "../../assets/images/types/bug.svg"
-import dark from "../../assets/images/types/dark.svg"
-import dragon from "../../assets/images/types/dragon.svg"
-import electric from "../../assets/images/types/electric.svg"
-import fairy from "../../assets/images/types/fairy.svg"
-import fighting from "../../assets/images/types/fighting.svg"
-import fire from "../../assets/images/types/fire.svg"
-import flying from "../../assets/images/types/flying.svg"
-import ghost from "../../assets/images/types/ghost.svg"
-import grass from "../../assets/images/types/grass.svg"
-import ground from "../../assets/images/types/ground.svg"
-import ice from "../../assets/images/types/ice.svg"
-import normal from "../../assets/images/types/normal.svg"
-import poison from "../../assets/images/types/poison.svg"
-import psychic from "../../assets/images/types/psychic.svg"
-import rock from "../../assets/images/types/rock.svg"
-import steel from "../../assets/images/types/steel.svg"
-import water from "../../assets/images/types/water.svg"
-import { BASE_URL } from "../../constant/BASE_URL/BASE_URL"
+import { useEffect, useState } from "react";
+import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DeleteButton, DetailsLink } from "./PokemonCardStyle";
+import axios from "axios";
+import { goToDetails } from "../../Routes/coordinator";
+import { useLocation, useNavigate } from "react-router-dom";
+import bug from "../../assets/images/types/bug.svg";
+import dark from "../../assets/images/types/dark.svg";
+import dragon from "../../assets/images/types/dragon.svg";
+import electric from "../../assets/images/types/electric.svg";
+import fairy from "../../assets/images/types/fairy.svg";
+import fighting from "../../assets/images/types/fighting.svg";
+import fire from "../../assets/images/types/fire.svg";
+import flying from "../../assets/images/types/flying.svg";
+import ghost from "../../assets/images/types/ghost.svg";
+import grass from "../../assets/images/types/grass.svg";
+import ground from "../../assets/images/types/ground.svg";
+import ice from "../../assets/images/types/ice.svg";
+import normal from "../../assets/images/types/normal.svg";
+import poison from "../../assets/images/types/poison.svg";
+import psychic from "../../assets/images/types/psychic.svg";
+import rock from "../../assets/images/types/rock.svg";
+import steel from "../../assets/images/types/steel.svg";
+import water from "../../assets/images/types/water.svg";
+import { BASE_URL } from "../../constant/BASE_URL/BASE_URL";
 
 
 export const PokemonCard = (props) => {
-    const { pokemon, catchPokemon, removePokemon, setPokemonDetail/* , pokemonDetail */, setPokemonToDet} = props;
+    const { pokemon, catchPokemon, removePokemon, setPokemonDetail, setPokemonToDet} = props;
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -116,7 +115,6 @@ export const PokemonCard = (props) => {
             //console.log(error.response)
         }
     }; 
-     
  
     //função para mapear os tipos de cada pokemon, para pegar os dois primeiros
     const typeList = types.map((typeObjt) =>{
@@ -139,17 +137,16 @@ export const PokemonCard = (props) => {
         }
     };
 
- const onClickDetails = () => {
-    setPokemonDetail(pokemon)
-    goToDetails(navigate, pokemon.name) 
-    setPokemonToDet(pokemon.name)
- }
+    const onClickDetails = () => {
+        setPokemonDetail(pokemon)
+        goToDetails(navigate, pokemon.name) 
+        setPokemonToDet(pokemon.name)
+    };
    
-
     return(
         <PokemonCardContainer typeColor={`${typeList[0]}`}>
              <DataContainer>
-                <InfoContainer waterMark={pokeballWaterMark}>
+                <InfoContainer>
                     <PokeId>#{id}</PokeId>
                     <PokeName>{pokemon.name.charAt(0).toLocaleUpperCase() + pokemon.name.slice(1)}</PokeName>
                     <TypeContainer>

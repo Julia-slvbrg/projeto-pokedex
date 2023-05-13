@@ -1,16 +1,18 @@
 import styled from "styled-components";
-
+import pokeballWaterMark from "../../assets/images/pokeball-mark.svg";
 
 export const PageContainer = styled.div`
-    //height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
     gap: 3em;
     padding: 2.5em 2em 2em 4em;
-    
-
+    background-image: url(${pokeballWaterMark});
+    background-repeat: no-repeat;
+    background-size: 59em;
+    background-position-x: 13em;
+    background-position-y: -1em;
 `
 
 export const DetText= styled.h1`
@@ -81,31 +83,34 @@ export const CardContainer = styled.div`
                 break;
         };
     }};
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 4em;
+    display: grid;
+    grid-template-columns: 1fr 1fr .8fr 1fr;
+    column-gap: 2.8em;
     align-items: stretch;
-    justify-content: stretch;
-    padding: 2em 3em 2em 3em;
+    padding: 1em;
     width: 90vw;
     height: 75vh;
     border-radius: 1.8em;
-
+    background-image: url(${pokeballWaterMark});
+    background-repeat: no-repeat;
+    background-size: 43em;
+    background-position-x: 44em;
+    background-position-y: 1em;
 ` 
 
 export const ImageContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
-    gap: 2em;
+    gap: 2.5em;
+    grid-column: 1/2;
 `
 
 export const PokeImg = styled.img`
     background-color: #FFFFFF;;
-    width: 210px;
-    height: 210px;
+    width: 230px;
+    height: 230px;
     border-radius: .5em;
 `
 
@@ -114,6 +119,7 @@ export const StatsContainer = styled.div`
     width: 400px;
     border-radius: .5em;
     padding: 2em;
+    grid-column: 2/3;
 `
 
 export const Title = styled.h2`
@@ -152,7 +158,6 @@ export const StatsText = styled.p`
     font-size: .8em;
     line-height: 3em;
     width: 100px;
-    //background-color: aqua;
     color: #8c8787;
 `
 
@@ -168,11 +173,10 @@ export const StatsNumber = styled.p`
 
 export const TotalStatsBar = styled.div`
     width: 30em;
-    //background-color: red;
 `
 
 export const StatsBar = styled.button`
-    width: ${(props)=>props.status}%;
+    width: ${(props)=>props.status <= 100? `${props.status}` : '100'}%;
     background-color: ${(props)=> props.status < 50 ? '#ff7b2e' : '#ffdd69'};
     border: 0;
     border-radius: .2em;
@@ -180,14 +184,16 @@ export const StatsBar = styled.button`
 `
 
 export const InfoContainer = styled.div`
-    //background-color: red;
-
+    grid-column: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 `
 export const PokeId = styled.h3`
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: .8em;
+    font-size: .9em;
     line-height: 1em;
     color: #FFFFFF;
 `
@@ -196,7 +202,7 @@ export const PokeName = styled.h1`
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 1.5em;
+    font-size: 2.3em;
     line-height: 1em;
     color: #FFFFFF;
     margin: .2em 0 .6em 0;
@@ -208,37 +214,43 @@ export const TypeContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: .5em;
-    margin-left: -.75em;
-    scale: .9;
+    scale: 1;
 `
-
+export const ImgBox = styled.div`
+    height: 275px;
+    width: 275px;
+    grid-column: 4/5;
+    position: relative;
+    top: -8em;
+    right: 1em;
+`
 export const ProfileImg = styled.img`
-    width: 10em;
-    height: 12em;
+    width: 16rem;
+    height: 16rem;
 `
 
 export const MovesContainer = styled.div`
     background-color: #FFFFFF;
     border-radius: .5em;
-    height: 365px;
-    width: 250px;
+    height: 345px;
+    width: 255px;
     padding: 1.5em 0 0 1em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
+    margin-top: 2.8em;
 `
 
 export const Moves = styled.p`
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: .8em;
-    line-height: 35px;
+    line-height: 40px;
     color: #000000;
     background-color:#ECECEC;
     border: 1.5px dashed #dcdcdc;
     border-radius: .8em;
-    margin-bottom: 1.2em;
+    margin-bottom: 1.4em;
     padding: 2px;
     min-width: fit-content;
     max-width: 40px;

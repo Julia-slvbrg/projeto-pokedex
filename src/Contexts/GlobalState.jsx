@@ -4,7 +4,6 @@ import { BASE_URL } from "../constant/BASE_URL/BASE_URL";
 import { GlobalContext } from "./GlobalContext";
 
 
-
 export default function GlobalState({children}){
 
     const [pokemonList, setPokemonList] = useState([]);
@@ -29,12 +28,12 @@ export default function GlobalState({children}){
         } catch (error) {
             //console.log(error.response)
         }
-    }
+    };
 
     //Função para acrescentar pokemons ao array pokedex
     const catchPokemon = (caughtPokemon) => {
         setPokedex([... pokedex, caughtPokemon]);
-    }
+    };
 
     //Função parar remover pokemons do array pokedex
     const removePokemon = (pokemonRemove) =>{
@@ -42,10 +41,7 @@ export default function GlobalState({children}){
             return pokemon.name !== pokemonRemove.name
         });
         setPokedex(pokemonInPokedex)
-    }
-
-    
-
+    };
 
     const data ={
         pokemonList,
@@ -56,10 +52,7 @@ export default function GlobalState({children}){
         pokemonDetail,
         pokemonToDet,
         setPokemonToDet
-
-    }
-
-
+    };
 
     return(
         <GlobalContext.Provider value={data}>

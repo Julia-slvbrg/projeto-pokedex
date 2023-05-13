@@ -1,17 +1,14 @@
-import { useContext, useEffect } from "react"
-import PokemonCard from "../../Components/PokemonCard/PokemonCard"
-import { PageContainer, PokemonListContainer } from './PokemonListStyle'
-import Header from '../../Components/Header/Header'
-import { GlobalContext } from "../../Contexts/GlobalContext"
-
-
+import { useContext, useEffect } from "react";
+import PokemonCard from "../../Components/PokemonCard/PokemonCard";
+import { PageContainer, PokemonListContainer } from './PokemonListStyle';
+import Header from '../../Components/Header/Header';
+import { GlobalContext } from "../../Contexts/GlobalContext";
 
 
 export const PokemonListPage = () =>{
 
     const context = useContext(GlobalContext);
-    const { pokemonList, catchPokemon, pokedex, setPokemonDetail/* , pokemonDetail */, setPokemonToDet, pokemonToDet } = context
-    
+    const { pokemonList, catchPokemon, pokedex, setPokemonDetail/* , pokemonDetail */, setPokemonToDet, pokemonToDet } = context;
     
     const filterPokemonList = () => {
         return pokemonList.filter((pokeList)=> !pokedex.find((pokePokedex)=> pokePokedex.name == pokeList.name))
@@ -31,7 +28,6 @@ export const PokemonListPage = () =>{
                             pokemon={pokemon}
                             catchPokemon={catchPokemon}
                             setPokemonDetail={setPokemonDetail}
-                           /*  pokemonDetail={pokemonDetail} */
                            setPokemonToDet={setPokemonToDet}
                         />
                     )
