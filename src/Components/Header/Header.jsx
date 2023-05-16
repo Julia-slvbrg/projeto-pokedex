@@ -1,13 +1,27 @@
-import { HeaderContainer, Image, PokedexButton, NavLink, ArrowIcon } from "./HeaderStyle";
+import { HeaderContainer, Image, Button, NavLink, ArrowIcon, DeleteButton } from "./HeaderStyle";
 import headerLogo from "../../assets/images/pokemons-logo-header.svg";
 import arrowSymbol from "../../assets/images/eva_arrow-ios-back-outline.svg";
 import {goToPokemonList, goToPokedex, goBack} from "../../Routes/coordinator";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../../Contexts/GlobalContext";
 
 
-export const Header = ({ pokemonToDet }) => {
+export const Header = ({ pokemonDetail }) => {
     const navigate = useNavigate();
     const location = useLocation();
+    const context = useContext(GlobalContext);
+    
+    const { removePokemon, catchPokemon, pokemonToDet, pokedex} = context;
+
+    const chooseButton = () => {
+        const pokemonInPokedex = pokedex.find((pokeObj)=> pokeObj.name == pokemonDetail.name);
+           
+        return (pokemonInPokedex ? 
+            <DeleteButton onClick={()=> removePokemon(pokemonDetail)}>Excluir da Pokédex</DeleteButton> : 
+            <Button onClick={()=> catchPokemon(pokemonDetail)}>Capturar!</Button>
+        )  
+    };
    
     const chooseHeader = () => {
         switch(location.pathname){
@@ -16,7 +30,7 @@ export const Header = ({ pokemonToDet }) => {
                     <HeaderContainer>
                    
                         <Image src={headerLogo} />
-                        <PokedexButton onClick={()=> goToPokedex(navigate)}>Pokédex</PokedexButton>
+                        <Button onClick={()=> goToPokedex(navigate)}>Pokédex</Button>
                     </HeaderContainer>
                 );
                 break
@@ -40,7 +54,7 @@ export const Header = ({ pokemonToDet }) => {
                             Todos Pokémons
                         </NavLink>
                         <Image src={headerLogo} />
-                        <PokedexButton>Excluir da Pokédex</PokedexButton>
+                        { chooseButton() }
                     </HeaderContainer>
                 );
                 break

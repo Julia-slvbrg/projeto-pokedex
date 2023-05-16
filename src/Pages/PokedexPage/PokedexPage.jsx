@@ -8,21 +8,17 @@ import { GlobalContext } from "../../Contexts/GlobalContext";
 export const PokedexPage = () => {
 
     const context = useContext(GlobalContext);
-    const { pokedex, pokeCard, removePokemon, setPokemonDetail,setPokemonToDet, pokemonToDet } = context;
+    const { pokedex } = context;
 
     return(
         <PageContainer>
-            <Header pokemonToDet={pokemonToDet}/>
+            <Header/>
             <PokedexContainer>
                 {pokedex.map((pokemon, index)=>{
                     return(
                         <PokemonCard
                             key={index}
                             pokemon={pokemon}
-                            pokeCard={pokeCard}
-                            removePokemon={removePokemon}
-                            setPokemonDetail={setPokemonDetail}
-                            setPokemonToDet={setPokemonToDet}
                         />
                     )
                 })}

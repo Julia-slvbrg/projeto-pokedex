@@ -35,12 +35,12 @@ export const NavLink = styled.a`
         text-decoration: none;
     };
 `
-
+''
 export const ArrowIcon = styled.img`
     scale: .9;
 `
 
-export const PokedexButton = styled.button`
+export const Button = styled.button`
     height: 3em;
     width: 12em;
     background-color: #33A4F5;
@@ -62,4 +62,25 @@ export const PokedexButton = styled.button`
         text-decoration: none;
     };
 `
-    
+export const DeleteButton = styled.button`
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2em;
+    color: #FFFFFF;
+    margin-left: 10em;
+    line-height: .9em;
+    height: 3em;
+    width: 15em;
+    border-radius: .3em;
+    background-color: #FF6262;
+    border: 1px solid #FF6262;
+    grid-column: 3/4;
+
+        &:hover{
+            cursor: pointer;
+        };
+        &:active{
+            text-decoration: underline;
+        };
+`
