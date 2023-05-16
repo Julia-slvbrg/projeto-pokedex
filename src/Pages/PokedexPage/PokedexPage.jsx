@@ -1,17 +1,14 @@
-import { useContext, useEffect } from "react"
-import Header from "../../Components/Header/Header"
-import PokemonCard from "../../Components/PokemonCard/PokemonCard"
-import { PageContainer, PokedexContainer } from "../PokedexPage/PokedexStyle"
-import { GlobalContext } from "../../Contexts/GlobalContext"
+import { useContext, useEffect } from "react";
+import Header from "../../Components/Header/Header";
+import PokemonCard from "../../Components/PokemonCard/PokemonCard";
+import { PageContainer, PokedexContainer } from "../PokedexPage/PokedexStyle";
+import { GlobalContext } from "../../Contexts/GlobalContext";
 
 
 export const PokedexPage = () => {
 
     const context = useContext(GlobalContext);
-    const { pokedex, pokeCard, removePokemon, setPokemonDetail/* , pokemonDetail */ } = context;
-
-  
-    
+    const { pokedex } = context;
 
     return(
         <PageContainer>
@@ -22,18 +19,11 @@ export const PokedexPage = () => {
                         <PokemonCard
                             key={index}
                             pokemon={pokemon}
-                            pokeCard={pokeCard}
-                            removePokemon={removePokemon}
-                            setPokemonDetail={setPokemonDetail}
-                            /* pokemonDetail={pokemonDetail} */
-                    
                         />
                     )
                 })}
             </PokedexContainer>
-            
         </PageContainer>
-
     )
 }
 

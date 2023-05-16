@@ -4,6 +4,7 @@ import { AppContainer } from "./AppStyle"
 import { BASE_URL } from "./constant/BASE_URL/BASE_URL"
 import Router from "./Routes/Router"
 import GlobalState from './Contexts/GlobalState'
+import Header from './Components/Header/Header'
 
 /* <!-- 
 

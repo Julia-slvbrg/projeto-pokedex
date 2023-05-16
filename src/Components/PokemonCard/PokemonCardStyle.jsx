@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import pokeballWaterMark from "../../assets/images/pokeball-mark.svg"
+import pokeballWaterMark from "../../assets/images/pokeball-mark.svg";
 
 export const PokemonCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid transparent;
-    height: 12em;
+    height: 13em;
     width: 27em;
     margin : 1.5em 0 1.5em 0;
     border-radius: .6em;
@@ -79,7 +79,6 @@ export const DataContainer = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
- 
 `
 
 export const InfoContainer = styled.div`
@@ -120,10 +119,10 @@ export const TypeContainer = styled.div`
 `
 
 export const Image = styled.img`
-    width: 10em;
-    height: 10em;
+    width: 11.5em;
+    height: 11.5em;
     position: relative;
-    bottom: 2.5em;
+    bottom: 3.5em;
     right: .5em;
 `
 
@@ -133,7 +132,7 @@ export const ButtonContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 1.5em 0 2em;
-    margin: -1.4em 0 0 0;
+    margin: -2em 0 0 0;
 `
 
 export const CatchButton = styled.button`
@@ -149,11 +148,10 @@ export const CatchButton = styled.button`
     background-color: #DDDDDD;
     border: 1px solid #DDDDDD;
 
-        :hover{
+        &:hover{
             cursor: pointer;
         };
-
-        :active{
+        &:active{
             text-decoration: underline;
         };
 `
@@ -171,11 +169,10 @@ export const DeleteButton = styled.button`
     background-color: #FF6262;
     border: 1px solid #FF6262;
 
-        :hover{
+        &:hover{
             cursor: pointer;
         };
-
-        :active{
+        &:active{
             text-decoration: underline;
         };
 `
@@ -189,11 +186,10 @@ export const DetailsLink = styled.a`
     line-height: 1em;
     text-decoration: underline;
 
-    :hover{
+    &:hover{
         cursor: pointer;
     };
-
-    :active{
+    &:active{
         text-decoration: none;
     };
 `
