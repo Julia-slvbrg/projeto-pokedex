@@ -12,7 +12,7 @@ export const Header = ({ pokemonDetail, setOpenModal, setIsFunctionCatch }) => {
     const location = useLocation();
     const context = useContext(GlobalContext);
     
-    const { removePokemon, catchPokemon, pokemonToDet, pokedex} = context;
+    const { removePokemon, catchPokemon, pokedex} = context;
 
     const chooseButton = () => {
         const pokemonInPokedex = pokedex.find((pokeObj)=> pokeObj.name == pokemonDetail.name);
@@ -30,43 +30,40 @@ export const Header = ({ pokemonDetail, setOpenModal, setIsFunctionCatch }) => {
             }}>Capturar!</Button>
         )  
     };
-   
+
+
     const chooseHeader = () => {
-        switch(location.pathname){
-            case '/':
-                return(
-                    <HeaderContainer>
-                        <Image src={headerLogo} />
-                        <Button onClick={()=> goToPokedex(navigate)}>Pokédex</Button>
-                    </HeaderContainer>
-                );
-                break
-            case '/pokedex':
-                return(
-                    <HeaderContainer>
-                        <NavLink onClick={() => goToPokemonList(navigate)}>
-                            <ArrowIcon src={arrowSymbol}/>
-                            Todos Pokémons
-                        </NavLink>
-                        <Image src={headerLogo} />
-                       
-                    </HeaderContainer>
-                );
-                break
-            case  `/pokedex/details/${pokemonToDet}`:
-                return(
-                    <HeaderContainer>
-                        <NavLink onClick={() => goBack(navigate)}>
-                            <ArrowIcon src={arrowSymbol}/>
-                            Todos Pokémons
-                        </NavLink>
-                        <Image src={headerLogo} />
-                        { chooseButton() }
-                    </HeaderContainer>
-                );
-                break
+        if(location.pathname==='/'){
+            return(
+                <HeaderContainer>
+                    <Image src={headerLogo} />
+                    <Button onClick={()=> goToPokedex(navigate)}>Pokédex</Button>
+                </HeaderContainer>
+            );
+        }else if(location.pathname==='/pokedex'){
+            return(
+                <HeaderContainer>
+                    <NavLink onClick={() => goToPokemonList(navigate)}>
+                        <ArrowIcon src={arrowSymbol}/>
+                        Todos Pokémons
+                    </NavLink>
+                    <Image src={headerLogo} />
+                   
+                </HeaderContainer>
+            );
+        }else{
+            return(
+                <HeaderContainer>
+                    <NavLink onClick={() => goBack(navigate)}>
+                        <ArrowIcon src={arrowSymbol}/>
+                        Todos Pokémons
+                    </NavLink>
+                    <Image src={headerLogo} />
+                    { chooseButton() }
+                </HeaderContainer>
+            );
         }
-    }; 
+    }
    
     return(
         <>

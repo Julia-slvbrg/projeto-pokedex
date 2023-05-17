@@ -27,7 +27,6 @@ export default function GlobalState({children}){
     const [pokemonList, setPokemonList] = useState([]);
     const [pokedex, setPokedex] = useState([]);
     const [pokemonDetail, setPokemonDetail] = useState([]);
-    const [pokemonToDet, setPokemonToDet] = useState('');
     const [openModal, setOpenModal] = useState(false);
     const [isFunctionCatch, setIsFunctionCatch] = useState(false)
     
@@ -131,8 +130,6 @@ export default function GlobalState({children}){
         removePokemon,
         setPokemonDetail,
         pokemonDetail,
-        pokemonToDet,
-        setPokemonToDet,
         getTypeImg,
         openModal,
         setOpenModal,

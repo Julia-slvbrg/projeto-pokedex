@@ -11,7 +11,7 @@ export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
     const navigate = useNavigate();
     const context = useContext(GlobalContext);
 
-    const { removePokemon, catchPokemon, getTypeImg, setPokemonToDet, setPokemonDetail } = context;
+    const { removePokemon, catchPokemon, getTypeImg, setPokemonDetail } = context;
 
     const [pokeImg, setPokeImg] = useState('');
     const [pokeId, setPokeId] = useState('');
@@ -69,7 +69,6 @@ export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
     const onClickDetails = () => {
         setPokemonDetail(pokemon) //esse vai para o array que irá renderizar na página de detalhes
         goToDetails(navigate, pokemon.name) 
-        setPokemonToDet(pokemon.name) //esse vai ser usado no useParams
     };
 
     return(

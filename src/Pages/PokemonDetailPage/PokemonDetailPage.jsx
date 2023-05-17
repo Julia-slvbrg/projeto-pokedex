@@ -10,7 +10,7 @@ import { Modal } from "../../Components/Modal/Modal";
 
 export const PokemonDetailPage = () =>{
     const context = useContext(GlobalContext);
-    //const { pokemonName } = useParams();
+    const { pokemonName } = useParams();
     const {pokemonDetail, getTypeImg, openModal, setOpenModal, isFunctionCatch, setIsFunctionCatch} = context;
 
     const [pokeImgFront, setPokeImgFront] = useState('');
@@ -26,22 +26,15 @@ export const PokemonDetailPage = () =>{
         getPokeDetails()
     }, []);
 
-    //nesse tipo de requisição try/catch, dá também pra colocar um .finally no final. Esse finally vai executar não importando se a função entrou no try ou no catch
-    //A diferença entre try/catch e try/then => o try/catch vai executando até aparecer o final ou até aparecer um erro, aí se aparecer um erro ele pula pro catch. Já no try/then, o try só executa se não tiver NENHUM ERRO, se tiver algum erro ele pula direto para o then.
     const getPokeDetails = async () => {
         try {
             const response = await 
-           /*  axios.get(`${pokemonDetail.url}`) */
-
-            axios.get(`${BASE_URL}pokemon/${pokemonDetail.name}`);
-
-            //console.log('det', response.data)
+            axios.get(`${BASE_URL}pokemon/${pokemonName}`);
             setPokeImgFront(response.data.sprites.front_default);
             setPokeImgBack(response.data.sprites.back_default);
             setPokeId(response.data.id);
             setTypes(response.data.types);
             setStats(response.data.stats);
-            //setPokeImg(response.data.sprites.other.dream_world.front_default);
             setPokeImg(response.data.sprites.other['official-artwork'].front_default);
             setMoves(response.data.moves);
 
@@ -152,7 +145,7 @@ export const PokemonDetailPage = () =>{
 
                     <InfoContainer>
                         <PokeId>#{id}</PokeId>
-                        <PokeName>{pokemonDetail.name.charAt(0).toLocaleUpperCase() + pokemonDetail.name.slice(1)}</PokeName>
+                        <PokeName>{pokemonName.charAt(0).toLocaleUpperCase() + pokemonName.slice(1)}</PokeName>
                         <TypeContainer>
                             {typeList[0] && getTypeImg(typeList[0])}
                             {typeList[1] && getTypeImg(typeList[1])}
@@ -177,4 +170,3 @@ export const PokemonDetailPage = () =>{
 }
 
 export default PokemonDetailPage
-

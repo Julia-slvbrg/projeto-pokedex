@@ -25,18 +25,20 @@ export const ModalContainer = styled.div`
     align-items: center;
 `
 
-export const CloseIcon = styled.span`
-  cursor: pointer;
-  position: fixed;
-  top: 2em;
-  right: 4em;
-`
-
 export const Title = styled.h1`
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 3em;
+  font-size: 2em;
+  color: #000000;
+  line-height: 2em;
+`
+
+export const Text = styled.p`
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1em;
   color: #000000;
   line-height: 2em;
 `
