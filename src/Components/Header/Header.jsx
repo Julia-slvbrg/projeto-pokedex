@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../../Contexts/GlobalContext";
 
 
-export const Header = ({ pokemonDetail }) => {
+export const Header = ({ pokemonDetail, setOpenModal, setIsFunctionCatch }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const context = useContext(GlobalContext);
@@ -18,8 +18,16 @@ export const Header = ({ pokemonDetail }) => {
         const pokemonInPokedex = pokedex.find((pokeObj)=> pokeObj.name == pokemonDetail.name);
            
         return (pokemonInPokedex ? 
-            <DeleteButton onClick={()=> removePokemon(pokemonDetail)}>Excluir da Pokédex</DeleteButton> : 
-            <Button onClick={()=> catchPokemon(pokemonDetail)}>Capturar!</Button>
+            <DeleteButton onClick={()=>{
+                removePokemon(pokemonDetail)
+                setOpenModal(true)
+                setIsFunctionCatch(false)
+            }}>Excluir da Pokédex</DeleteButton> : 
+            <Button onClick={()=>{
+                catchPokemon(pokemonDetail)
+                setOpenModal(true)
+                setIsFunctionCatch(true)
+            }}>Capturar!</Button>
         )  
     };
    
@@ -28,7 +36,6 @@ export const Header = ({ pokemonDetail }) => {
             case '/':
                 return(
                     <HeaderContainer>
-                   
                         <Image src={headerLogo} />
                         <Button onClick={()=> goToPokedex(navigate)}>Pokédex</Button>
                     </HeaderContainer>
@@ -38,7 +45,7 @@ export const Header = ({ pokemonDetail }) => {
                 return(
                     <HeaderContainer>
                         <NavLink onClick={() => goToPokemonList(navigate)}>
-                        <ArrowIcon src={arrowSymbol}/>
+                            <ArrowIcon src={arrowSymbol}/>
                             Todos Pokémons
                         </NavLink>
                         <Image src={headerLogo} />
@@ -50,7 +57,7 @@ export const Header = ({ pokemonDetail }) => {
                 return(
                     <HeaderContainer>
                         <NavLink onClick={() => goBack(navigate)}>
-                        <ArrowIcon src={arrowSymbol}/>
+                            <ArrowIcon src={arrowSymbol}/>
                             Todos Pokémons
                         </NavLink>
                         <Image src={headerLogo} />

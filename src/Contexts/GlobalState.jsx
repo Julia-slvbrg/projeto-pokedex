@@ -26,9 +26,10 @@ export default function GlobalState({children}){
 
     const [pokemonList, setPokemonList] = useState([]);
     const [pokedex, setPokedex] = useState([]);
-    const [filteredList, setFilteredList] = useState();
     const [pokemonDetail, setPokemonDetail] = useState([]);
     const [pokemonToDet, setPokemonToDet] = useState('');
+    const [openModal, setOpenModal] = useState(false);
+    const [isFunctionCatch, setIsFunctionCatch] = useState(false)
     
     useEffect(()=>{
         getAllPokemon() 
@@ -132,7 +133,11 @@ export default function GlobalState({children}){
         pokemonDetail,
         pokemonToDet,
         setPokemonToDet,
-        getTypeImg
+        getTypeImg,
+        openModal,
+        setOpenModal,
+        isFunctionCatch, 
+        setIsFunctionCatch
     };
 
     return(

@@ -5,12 +5,13 @@ import { PageContainer, DetText, CardContainer, ImageContainer, PokeImg, StatsCo
 import axios from "axios";
 import { BASE_URL } from "../../constant/BASE_URL/BASE_URL";
 import { useParams } from "react-router-dom";
+import { Modal } from "../../Components/Modal/Modal";
 
 
 export const PokemonDetailPage = () =>{
     const context = useContext(GlobalContext);
     //const { pokemonName } = useParams();
-    const {pokemonDetail, pokedex, getTypeImg} = context;
+    const {pokemonDetail, getTypeImg, openModal, setOpenModal, isFunctionCatch, setIsFunctionCatch} = context;
 
     const [pokeImgFront, setPokeImgFront] = useState('');
     const [pokeImgBack, setPokeImgBack] = useState('');
@@ -79,8 +80,16 @@ export const PokemonDetailPage = () =>{
         <>
             <Header 
                 pokemonDetail={pokemonDetail}
+                setOpenModal={setOpenModal}
+                openModal={openModal}
+                setIsFunctionCatch={setIsFunctionCatch}
             />
             <PageContainer>
+                <Modal
+                    openModal={openModal}
+                    setOpenModal={() => setOpenModal(!openModal)}
+                    isFunctionCatch={isFunctionCatch}
+                />
         
                 <DetText>Detalhes</DetText>
 

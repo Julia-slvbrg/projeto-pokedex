@@ -1,14 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import { PageContainer, PokemonListContainer } from './PokemonListStyle';
 import Header from '../../Components/Header/Header';
 import { GlobalContext } from "../../Contexts/GlobalContext";
+import { Modal } from "../../Components/Modal/Modal";
 
 
 export const PokemonListPage = () =>{
 
     const context = useContext(GlobalContext);
-    const { pokemonList, pokedex } = context;
+    const { pokemonList, pokedex, openModal, setOpenModal, isFunctionCatch, setIsFunctionCatch } = context;
     
     const filterPokemonList = () => {
         return pokemonList.filter((pokeList)=> !pokedex.find((pokePokedex)=> pokePokedex.name == pokeList.name))
@@ -20,12 +21,19 @@ export const PokemonListPage = () =>{
         
         <PageContainer>
             <Header/>
+            <Modal
+                openModal={openModal}
+                setOpenModal={() => setOpenModal(!openModal)}
+                isFunctionCatch={isFunctionCatch}
+            />
             <PokemonListContainer> 
                 {filterPokemonList().map((pokemon, index)=>{
                     return(
                         <PokemonCard
                             key={index}
                             pokemon={pokemon}
+                            setOpenModal={setOpenModal}
+                            setIsFunctionCatch={setIsFunctionCatch}
                         />
                     )
                 })}         
