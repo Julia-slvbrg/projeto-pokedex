@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import Header from "../../Components/Header/Header";
 import { GlobalContext } from "../../Contexts/GlobalContext";
 import { PageContainer, DetText, CardContainer, ImageContainer, PokeImg, StatsContainer, Title, StatsParams, StatsText, StatsNumber, StatsBar, TotalStatsBar, InfoContainer, ProfileImg, MovesContainer, StatsParamsTotal, Moves, PokeId, PokeName, TypeContainer, ImgBox } from "./PokemonDetailStyle";
 import axios from "axios";
@@ -11,7 +10,7 @@ import { Modal } from "../../Components/Modal/Modal";
 export const PokemonDetailPage = () =>{
     const context = useContext(GlobalContext);
     const { pokemonName } = useParams();
-    const {pokemonDetail, getTypeImg, openModal, setOpenModal, isFunctionCatch, setIsFunctionCatch} = context;
+    const {getTypeImg, openModal, setOpenModal, isFunctionCatch} = context;
 
     const [pokeImgFront, setPokeImgFront] = useState('');
     const [pokeImgBack, setPokeImgBack] = useState('');
@@ -70,102 +69,94 @@ export const PokemonDetailPage = () =>{
     });
     
     return(
-        <>
-            <Header 
-                pokemonDetail={pokemonDetail}
-                setOpenModal={setOpenModal}
+        <PageContainer>
+            <Modal
                 openModal={openModal}
-                setIsFunctionCatch={setIsFunctionCatch}
+                setOpenModal={() => setOpenModal(!openModal)}
+                isFunctionCatch={isFunctionCatch}
             />
-            <PageContainer>
-                <Modal
-                    openModal={openModal}
-                    setOpenModal={() => setOpenModal(!openModal)}
-                    isFunctionCatch={isFunctionCatch}
-                />
         
-                <DetText>Detalhes</DetText>
+            <DetText>Detalhes</DetText>
 
-                <CardContainer typeColor={`${typeList[0]}`}>
-                    <ImageContainer>
-                        <PokeImg src={pokeImgFront} alt="poke-img-front"/>
-                        <PokeImg src={pokeImgBack} alt="poke-img-back"/>      
-                    </ImageContainer>
+            <CardContainer typeColor={`${typeList[0]}`}>
+                <ImageContainer>
+                    <PokeImg src={pokeImgFront} alt="poke-img-front"/>
+                    <PokeImg src={pokeImgBack} alt="poke-img-back"/>      
+                </ImageContainer>
 
-                    <StatsContainer>
-                        <Title>Base Stats</Title>
-                        <StatsParams>
-                            <StatsText>HP</StatsText>
-                            <StatsNumber>{arrStats[0]}</StatsNumber>
-                            <TotalStatsBar>
-                                <StatsBar status={arrStats[0]}></StatsBar>
+                <StatsContainer>
+                    <Title>Base Stats</Title>
+                    <StatsParams>
+                        <StatsText>HP</StatsText>
+                        <StatsNumber>{arrStats[0]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[0]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+                    <StatsParams>
+                        <StatsText>Attack</StatsText>
+                        <StatsNumber>{arrStats[1]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[1]}></StatsBar>
                             </TotalStatsBar>
-                        </StatsParams>
-                        <StatsParams>
-                            <StatsText>Attack</StatsText>
-                            <StatsNumber>{arrStats[1]}</StatsNumber>
-                            <TotalStatsBar>
-                                <StatsBar status={arrStats[1]}></StatsBar>
+                    </StatsParams>
+                    <StatsParams>
+                        <StatsText>Defense</StatsText>
+                        <StatsNumber>{arrStats[2]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[2]}></StatsBar>
                             </TotalStatsBar>
-                        </StatsParams>
-                        <StatsParams>
-                            <StatsText>Defense</StatsText>
-                            <StatsNumber>{arrStats[2]}</StatsNumber>
-                            <TotalStatsBar>
-                                <StatsBar status={arrStats[2]}></StatsBar>
-                            </TotalStatsBar>
-                        </StatsParams>
-                        <StatsParams>
-                            <StatsText>Sp. Atk</StatsText>
-                            <StatsNumber>{arrStats[3]}</StatsNumber>
-                            <TotalStatsBar>
-                                <StatsBar status={arrStats[3]}></StatsBar>
-                            </TotalStatsBar>
-                        </StatsParams>
-                        <StatsParams>
-                            <StatsText>Sp. Def</StatsText>
-                            <StatsNumber>{arrStats[4]}</StatsNumber>
-                            <TotalStatsBar>
-                                <StatsBar status={arrStats[4]}></StatsBar>
-                            </TotalStatsBar>
-                        </StatsParams>
-                        <StatsParams>
-                            <StatsText>Speed</StatsText>
-                            <StatsNumber>{arrStats[5]}</StatsNumber>
-                            <TotalStatsBar>
-                                <StatsBar status={arrStats[5]}></StatsBar>
-                            </TotalStatsBar>
-                        </StatsParams>
-                        <StatsParamsTotal>
-                            <StatsText>Total</StatsText>
-                            <StatsNumber><b>{getSum()}</b></StatsNumber>
-                            <TotalStatsBar></TotalStatsBar>
-                        </StatsParamsTotal>
-                    </StatsContainer>
+                    </StatsParams>
+                    <StatsParams>
+                        <StatsText>Sp. Atk</StatsText>
+                        <StatsNumber>{arrStats[3]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[3]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+                    <StatsParams>
+                        <StatsText>Sp. Def</StatsText>
+                        <StatsNumber>{arrStats[4]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[4]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+                    <StatsParams>
+                        <StatsText>Speed</StatsText>
+                        <StatsNumber>{arrStats[5]}</StatsNumber>
+                        <TotalStatsBar>
+                            <StatsBar status={arrStats[5]}></StatsBar>
+                        </TotalStatsBar>
+                    </StatsParams>
+                    <StatsParamsTotal>
+                        <StatsText>Total</StatsText>
+                        <StatsNumber><b>{getSum()}</b></StatsNumber>
+                        <TotalStatsBar></TotalStatsBar>
+                    </StatsParamsTotal>
+                </StatsContainer>
 
-                    <InfoContainer>
-                        <PokeId>#{id}</PokeId>
-                        <PokeName>{pokemonName.charAt(0).toLocaleUpperCase() + pokemonName.slice(1)}</PokeName>
-                        <TypeContainer>
-                            {typeList[0] && getTypeImg(typeList[0])}
-                            {typeList[1] && getTypeImg(typeList[1])}
-                        </TypeContainer>
+                <InfoContainer>
+                    <PokeId>#{id}</PokeId>
+                    <PokeName>{pokemonName.charAt(0).toLocaleUpperCase() + pokemonName.slice(1)}</PokeName>
+                    <TypeContainer>
+                        {typeList[0] && getTypeImg(typeList[0])}
+                        {typeList[1] && getTypeImg(typeList[1])}
+                    </TypeContainer>
 
-                        <MovesContainer>
-                            <Title>Moves:</Title>
-                            <Moves>{arrMoves.length>0 && arrMoves[0].charAt(0).toLocaleUpperCase() + arrMoves[0].slice(1)}</Moves>
-                            <Moves>{arrMoves.length>0 && arrMoves[1].charAt(0).toLocaleUpperCase() + arrMoves[1].slice(1)}</Moves>
-                            <Moves>{arrMoves.length>0 && arrMoves[2].charAt(0).toLocaleUpperCase() + arrMoves[2].slice(1)}</Moves>
-                            <Moves>{arrMoves.length>0 && arrMoves[3].charAt(0).toLocaleUpperCase() + arrMoves[3].slice(1)}</Moves>
-                        </MovesContainer>
-                    </InfoContainer>
+                    <MovesContainer>
+                        <Title>Moves:</Title>
+                        <Moves>{arrMoves.length>0 && arrMoves[0].charAt(0).toLocaleUpperCase() + arrMoves[0].slice(1)}</Moves>
+                        <Moves>{arrMoves.length>0 && arrMoves[1].charAt(0).toLocaleUpperCase() + arrMoves[1].slice(1)}</Moves>
+                        <Moves>{arrMoves.length>0 && arrMoves[2].charAt(0).toLocaleUpperCase() + arrMoves[2].slice(1)}</Moves>
+                        <Moves>{arrMoves.length>0 && arrMoves[3].charAt(0).toLocaleUpperCase() + arrMoves[3].slice(1)}</Moves>
+                    </MovesContainer>
+                </InfoContainer>
 
-                    <ImgBox>
-                        <ProfileImg src={pokeImg} alt="pokemon-img"/>
-                    </ImgBox>
-                </CardContainer>
-            </PageContainer>
-        </>
+                <ImgBox>
+                    <ProfileImg src={pokeImg} alt="pokemon-img"/>
+                </ImgBox>
+            </CardContainer>
+        </PageContainer>
     )
 }
 

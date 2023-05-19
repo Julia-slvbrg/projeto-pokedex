@@ -7,12 +7,12 @@ import { useContext } from "react";
 import { GlobalContext } from "../../Contexts/GlobalContext";
 
 
-export const Header = ({ pokemonDetail, setOpenModal, setIsFunctionCatch }) => {
+export const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const context = useContext(GlobalContext);
     
-    const { removePokemon, catchPokemon, pokedex} = context;
+    const { removePokemon, catchPokemon, pokedex, setOpenModal, setIsFunctionCatch, pokemonDetail} = context;
 
     const chooseButton = () => {
         const pokemonInPokedex = pokedex.find((pokeObj)=> pokeObj.name == pokemonDetail.name);
@@ -30,7 +30,6 @@ export const Header = ({ pokemonDetail, setOpenModal, setIsFunctionCatch }) => {
             }}>Capturar!</Button>
         )  
     };
-
 
     const chooseHeader = () => {
         if(location.pathname==='/'){

@@ -22,20 +22,21 @@ import steel from "../assets/images/types/steel.svg";
 import water from "../assets/images/types/water.svg";
 
 
+
 export default function GlobalState({children}){
 
     const [pokemonList, setPokemonList] = useState([]);
     const [pokedex, setPokedex] = useState([]);
     const [pokemonDetail, setPokemonDetail] = useState([]);
     const [openModal, setOpenModal] = useState(false);
-    const [isFunctionCatch, setIsFunctionCatch] = useState(false)
-    
+    const [isFunctionCatch, setIsFunctionCatch] = useState(false);
+
     useEffect(()=>{
         getAllPokemon() 
         setPokemonDetail()
     }, []);
  
-  
+    
     //Função parar pegar todos os dados de todos os pokemons da API
     const getAllPokemon = async () => {
         try {

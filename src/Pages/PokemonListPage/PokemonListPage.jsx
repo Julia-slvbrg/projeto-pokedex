@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import { PageContainer, PokemonListContainer } from './PokemonListStyle';
-import Header from '../../Components/Header/Header';
 import { GlobalContext } from "../../Contexts/GlobalContext";
 import { Modal } from "../../Components/Modal/Modal";
 
@@ -19,7 +18,6 @@ export const PokemonListPage = () =>{
     return(
         
         <PageContainer>
-            <Header/>
             <Modal
                 openModal={openModal}
                 setOpenModal={() => setOpenModal(!openModal)}

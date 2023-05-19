@@ -67,7 +67,7 @@ export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
     };
 
     const onClickDetails = () => {
-        setPokemonDetail(pokemon) //esse vai para o array que irá renderizar na página de detalhes
+        setPokemonDetail(pokemon) //esse vai para o array que vai ser usado nas funções de capturar e retirar da pokedex
         goToDetails(navigate, pokemon.name) 
     };
 
