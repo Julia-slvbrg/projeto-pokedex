@@ -6,13 +6,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constant/BASE_URL/BASE_URL";
 import { GlobalContext } from "../../Contexts/GlobalContext";
 
-
-export const PokemonCard = ({ pokemon }) => {
+export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
     const location = useLocation();
     const navigate = useNavigate();
     const context = useContext(GlobalContext);
 
-    const { removePokemon, catchPokemon, getTypeImg, setPokemonToDet, setPokemonDetail } = context;
+    const { removePokemon, catchPokemon, getTypeImg, setPokemonDetail } = context;
 
     const [pokeImg, setPokeImg] = useState('');
     const [pokeId, setPokeId] = useState('');
@@ -50,25 +49,31 @@ export const PokemonCard = ({ pokemon }) => {
     const selectButton = () => {
         if(location.pathname === '/'){
             return(
-                <CatchButton onClick={()=> catchPokemon(pokemon)}>Capturar!</CatchButton>
+                <CatchButton onClick={()=> {
+                    catchPokemon(pokemon)
+                    setOpenModal(true)
+                    setIsFunctionCatch(true)
+                }}>Capturar!</CatchButton>
             )
         }else if(location.pathname === '/pokedex'){
             return(
-                <DeleteButton onClick={()=> removePokemon(pokemon)}>Excluir</DeleteButton>
+                <DeleteButton onClick={()=> {
+                    removePokemon(pokemon)
+                    setOpenModal(true)
+                    setIsFunctionCatch(false)
+                }}>Excluir</DeleteButton>
             )
         }
     };
 
     const onClickDetails = () => {
-        setPokemonDetail(pokemon) //esse vai para o array que irá renderizar na página de detalhes
+        setPokemonDetail(pokemon) //esse vai para o array que vai ser usado nas funções de capturar e retirar da pokedex
         goToDetails(navigate, pokemon.name) 
-        setPokemonToDet(pokemon.name) //esse vai ser usado no useParams
     };
 
-   
     return(
         <PokemonCardContainer typeColor={`${typeList[0]}`}>
-             <DataContainer>
+            <DataContainer>
                 <InfoContainer>
                     <PokeId>#{id}</PokeId>
                     <PokeName>{pokemon.name.charAt(0).toLocaleUpperCase() + pokemon.name.slice(1)}</PokeName>

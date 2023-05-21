@@ -7,59 +7,62 @@ import { useContext } from "react";
 import { GlobalContext } from "../../Contexts/GlobalContext";
 
 
-export const Header = ({ pokemonDetail }) => {
+export const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const context = useContext(GlobalContext);
     
-    const { removePokemon, catchPokemon, pokemonToDet, pokedex} = context;
+    const { removePokemon, catchPokemon, pokedex, setOpenModal, setIsFunctionCatch, pokemonDetail} = context;
 
     const chooseButton = () => {
         const pokemonInPokedex = pokedex.find((pokeObj)=> pokeObj.name == pokemonDetail.name);
            
         return (pokemonInPokedex ? 
-            <DeleteButton onClick={()=> removePokemon(pokemonDetail)}>Excluir da Pokédex</DeleteButton> : 
-            <Button onClick={()=> catchPokemon(pokemonDetail)}>Capturar!</Button>
+            <DeleteButton onClick={()=>{
+                removePokemon(pokemonDetail)
+                setOpenModal(true)
+                setIsFunctionCatch(false)
+            }}>Excluir da Pokédex</DeleteButton> : 
+            <Button onClick={()=>{
+                catchPokemon(pokemonDetail)
+                setOpenModal(true)
+                setIsFunctionCatch(true)
+            }}>Capturar!</Button>
         )  
     };
-   
+
     const chooseHeader = () => {
-        switch(location.pathname){
-            case '/':
-                return(
-                    <HeaderContainer>
+        if(location.pathname==='/'){
+            return(
+                <HeaderContainer>
+                    <Image src={headerLogo} />
+                    <Button onClick={()=> goToPokedex(navigate)}>Pokédex</Button>
+                </HeaderContainer>
+            );
+        }else if(location.pathname==='/pokedex'){
+            return(
+                <HeaderContainer>
+                    <NavLink onClick={() => goToPokemonList(navigate)}>
+                        <ArrowIcon src={arrowSymbol}/>
+                        Todos Pokémons
+                    </NavLink>
+                    <Image src={headerLogo} />
                    
-                        <Image src={headerLogo} />
-                        <Button onClick={()=> goToPokedex(navigate)}>Pokédex</Button>
-                    </HeaderContainer>
-                );
-                break
-            case '/pokedex':
-                return(
-                    <HeaderContainer>
-                        <NavLink onClick={() => goToPokemonList(navigate)}>
+                </HeaderContainer>
+            );
+        }else{
+            return(
+                <HeaderContainer>
+                    <NavLink onClick={() => goBack(navigate)}>
                         <ArrowIcon src={arrowSymbol}/>
-                            Todos Pokémons
-                        </NavLink>
-                        <Image src={headerLogo} />
-                       
-                    </HeaderContainer>
-                );
-                break
-            case  `/pokedex/details/${pokemonToDet}`:
-                return(
-                    <HeaderContainer>
-                        <NavLink onClick={() => goBack(navigate)}>
-                        <ArrowIcon src={arrowSymbol}/>
-                            Todos Pokémons
-                        </NavLink>
-                        <Image src={headerLogo} />
-                        { chooseButton() }
-                    </HeaderContainer>
-                );
-                break
+                        Todos Pokémons
+                    </NavLink>
+                    <Image src={headerLogo} />
+                    { chooseButton() }
+                </HeaderContainer>
+            );
         }
-    }; 
+    }
    
     return(
         <>

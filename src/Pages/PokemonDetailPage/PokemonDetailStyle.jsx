@@ -217,16 +217,16 @@ export const TypeContainer = styled.div`
     scale: 1;
 `
 export const ImgBox = styled.div`
-    height: 275px;
-    width: 275px;
+    height: 27em;
+    width: 27em;
     grid-column: 4/5;
     position: relative;
     top: -8em;
     right: 1em;
 `
 export const ProfileImg = styled.img`
-    width: 16rem;
-    height: 16rem;
+    width: 70%;
+    height: 70%;
 `
 
 export const MovesContainer = styled.div`
