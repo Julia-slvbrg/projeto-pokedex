@@ -26,7 +26,6 @@ O Projeto Pokédex é uma aplicação que permite ao usuário escolher diversos 
 ![Pokédex](./src/assets/images/readme/layout-pokedex.png)
 ![Pokédex-Card](./src/assets/images/readme/layout-pokedex-card.png)
 ![Pokémon- detalhes](./src/assets/images/readme/layout-pokemondetails.png)
-[Vídeo demonstrando as funcionalidades](./src/assets/images/readme/funcionalidades.mp4)
 
 ## Demonstração
 [Link Demonstração (deploy)](https://draconian-poison.surge.sh/)
