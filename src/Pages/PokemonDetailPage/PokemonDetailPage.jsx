@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../Contexts/GlobalContext";
-import { PageContainer, DetText, CardContainer, ImageContainer, PokeImg, StatsContainer, Title, StatsParams, StatsText, StatsNumber, StatsBar, TotalStatsBar, InfoContainer, ProfileImg, MovesContainer, StatsParamsTotal, Moves, PokeId, PokeName, TypeContainer, ImgBox } from "./PokemonDetailStyle";
+import { PageContainer, DetText, CardContainer, ImageContainer, PokeImg, StatsContainer, Title, StatsParams, StatsText, StatsNumber, StatsBar, TotalStatsBar, InfoContainer, ProfileImg, MovesContainer, StatsParamsTotal, Moves, PokeId, PokeName, PokeTypeContainer, ImgBox } from "./PokemonDetailStyle";
 import axios from "axios";
 import { BASE_URL } from "../../constant/BASE_URL/BASE_URL";
 import { useParams } from "react-router-dom";
@@ -10,12 +10,12 @@ import { Modal } from "../../Components/Modal/Modal";
 export const PokemonDetailPage = () =>{
     const context = useContext(GlobalContext);
     const { pokemonName } = useParams();
-    const {getTypeImg, openModal, setOpenModal, isFunctionCatch} = context;
+    const {getPokeTypeImg, openModal, setOpenModal, isFunctionCatch} = context;
 
     const [pokeImgFront, setPokeImgFront] = useState('');
     const [pokeImgBack, setPokeImgBack] = useState('');
     const [pokeId, setPokeId] = useState('');
-    const [types, setTypes] = useState([]);
+    const [pokeTypes, setPokeTypes] = useState([]);
     const [stats, setStats] = useState([]);
     const [pokeImg, setPokeImg] = useState('');
     const [moves, setMoves] = useState([]);
@@ -32,7 +32,7 @@ export const PokemonDetailPage = () =>{
             setPokeImgFront(response.data.sprites.front_default);
             setPokeImgBack(response.data.sprites.back_default);
             setPokeId(response.data.id);
-            setTypes(response.data.types);
+            setPokeTypes(response.data.types);
             setStats(response.data.stats);
             setPokeImg(response.data.sprites.other['official-artwork'].front_default);
             setMoves(response.data.moves);
@@ -46,7 +46,7 @@ export const PokemonDetailPage = () =>{
     const id = pokeId.toString().length === 1? `0${pokeId.toString()}` : pokeId.toString();
 
     //função para mapear os tipos de cada pokemon, para pegar os dois primeiros
-    const typeList = types.map((typeObjt) =>{
+    const pokeTypeList = pokeTypes.map((typeObjt) =>{
         return( typeObjt.type.name )
     });
 
@@ -78,7 +78,7 @@ export const PokemonDetailPage = () =>{
         
             <DetText>Detalhes</DetText>
 
-            <CardContainer typeColor={`${typeList[0]}`}>
+            <CardContainer pokeTypeColor={`${pokeTypeList[0]}`}>
                 <ImageContainer>
                     <PokeImg src={pokeImgFront} alt="poke-img-front"/>
                     <PokeImg src={pokeImgBack} alt="poke-img-back"/>      
@@ -138,10 +138,10 @@ export const PokemonDetailPage = () =>{
                 <InfoContainer>
                     <PokeId>#{id}</PokeId>
                     <PokeName>{pokemonName.charAt(0).toLocaleUpperCase() + pokemonName.slice(1)}</PokeName>
-                    <TypeContainer>
-                        {typeList[0] && getTypeImg(typeList[0])}
-                        {typeList[1] && getTypeImg(typeList[1])}
-                    </TypeContainer>
+                    <PokeTypeContainer>
+                        {pokeTypeList[0] && getPokeTypeImg(pokeTypeList[0])}
+                        {pokeTypeList[1] && getPokeTypeImg(pokeTypeList[1])}
+                    </PokeTypeContainer>
 
                     <MovesContainer>
                         <Title>Moves:</Title>

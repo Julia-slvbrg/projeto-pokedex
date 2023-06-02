@@ -2,24 +2,24 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../constant/BASE_URL/BASE_URL";
 import { GlobalContext } from "./GlobalContext";
-import bug from "../assets/images/types/bug.svg";
-import dark from "../assets/images/types/dark.svg";
-import dragon from "../assets/images/types/dragon.svg";
-import electric from "../assets/images/types/electric.svg";
-import fairy from "../assets/images/types/fairy.svg";
-import fighting from "../assets/images/types/fighting.svg";
-import fire from "../assets/images/types/fire.svg";
-import flying from "../assets/images/types/flying.svg";
-import ghost from "../assets/images/types/ghost.svg";
-import grass from "../assets/images/types/grass.svg";
-import ground from "../assets/images/types/ground.svg";
-import ice from "../assets/images/types/ice.svg";
-import normal from "../assets/images/types/normal.svg";
-import poison from "../assets/images/types/poison.svg";
-import psychic from "../assets/images/types/psychic.svg";
-import rock from "../assets/images/types/rock.svg";
-import steel from "../assets/images/types/steel.svg";
-import water from "../assets/images/types/water.svg";
+import bug from "../assets/images/poke-types/bug.svg";
+import dark from "../assets/images/poke-types/dark.svg";
+import dragon from "../assets/images/poke-types/dragon.svg";
+import electric from "../assets/images/poke-types/electric.svg";
+import fairy from "../assets/images/poke-types/fairy.svg";
+import fighting from "../assets/images/poke-types/fighting.svg";
+import fire from "../assets/images/poke-types/fire.svg";
+import flying from "../assets/images/poke-types/flying.svg";
+import ghost from "../assets/images/poke-types/ghost.svg";
+import grass from "../assets/images/poke-types/grass.svg";
+import ground from "../assets/images/poke-types/ground.svg";
+import ice from "../assets/images/poke-types/ice.svg";
+import normal from "../assets/images/poke-types/normal.svg";
+import poison from "../assets/images/poke-types/poison.svg";
+import psychic from "../assets/images/poke-types/psychic.svg";
+import rock from "../assets/images/poke-types/rock.svg";
+import steel from "../assets/images/poke-types/steel.svg";
+import water from "../assets/images/poke-types/water.svg";
 
 
 
@@ -63,9 +63,9 @@ export default function GlobalState({children}){
     };
 
     //Função para renderizar a imagem específica do tipo do pokemon no card
-    const getTypeImg =(type) =>{
-        if(type){
-            switch(type){
+    const getPokeTypeImg =(pokeType) =>{
+        if(pokeType){
+            switch(pokeType){
                 case 'bug':
                     return(<img src={bug}/>)
                     break;
@@ -131,7 +131,7 @@ export default function GlobalState({children}){
         removePokemon,
         setPokemonDetail,
         pokemonDetail,
-        getTypeImg,
+        getPokeTypeImg,
         openModal,
         setOpenModal,
         isFunctionCatch, 
