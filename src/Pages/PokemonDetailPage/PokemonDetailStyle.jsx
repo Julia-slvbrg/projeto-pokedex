@@ -26,7 +26,7 @@ export const DetText= styled.h1`
 
 export const CardContainer = styled.div`
     background-color: ${(props) => {
-        switch(props.typeColor){
+        switch(props.pokeTypeColor){
             case 'bug':
                 return '#76A866' 
                 break;
@@ -208,7 +208,7 @@ export const PokeName = styled.h1`
     margin: .2em 0 .6em 0;
 `
 
-export const TypeContainer = styled.div`
+export const PokeTypeContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

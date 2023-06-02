@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import{ PokemonCardContainer, InfoContainer, DataContainer, TypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DeleteButton, DetailsLink } from "./PokemonCardStyle";
+import{ PokemonCardContainer, InfoContainer, DataContainer, PokeTypeContainer, PokeId, PokeName, Image, ButtonContainer, CatchButton, DeleteButton, DetailsLink } from "./PokemonCardStyle";
 import axios from "axios";
 import { goToDetails } from "../../Routes/coordinator";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -11,11 +11,11 @@ export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
     const navigate = useNavigate();
     const context = useContext(GlobalContext);
 
-    const { removePokemon, catchPokemon, getTypeImg, setPokemonDetail } = context;
+    const { removePokemon, catchPokemon, getPokeTypeImg, setPokemonDetail } = context;
 
     const [pokeImg, setPokeImg] = useState('');
     const [pokeId, setPokeId] = useState('');
-    const [types, setTypes] = useState([]);
+    const [poketypes, setPokeTypes] = useState([]);
 
     useEffect(() => {
         getPokemonData()
@@ -30,7 +30,7 @@ export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
             setPokeId(response.data.id);
             setPokeImg(response.data.sprites.other['official-artwork'].front_default);
             //setPokeImg(response.data.sprites.other.dream_world.front_default);
-            setTypes(response.data.types);
+            setPokeTypes(response.data.types);
 
         } catch (error) {
             //console.log(error.response)
@@ -38,7 +38,7 @@ export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
     }; 
  
     //função para mapear os tipos de cada pokemon, para pegar os dois primeiros
-    const typeList = types.map((typeObjt) =>{
+    const pokeTypeList = poketypes.map((typeObjt) =>{
         return( typeObjt.type.name )
     });
     
@@ -72,15 +72,15 @@ export const PokemonCard = ({ pokemon, setOpenModal, setIsFunctionCatch }) => {
     };
 
     return(
-        <PokemonCardContainer typeColor={`${typeList[0]}`}>
+        <PokemonCardContainer pokeTypeColor={`${pokeTypeList[0]}`}>
             <DataContainer>
                 <InfoContainer>
                     <PokeId>#{id}</PokeId>
                     <PokeName>{pokemon.name.charAt(0).toLocaleUpperCase() + pokemon.name.slice(1)}</PokeName>
-                    <TypeContainer>
-                        {typeList[0] && getTypeImg(typeList[0])}
-                        {typeList[0] && getTypeImg(typeList[1])}
-                    </TypeContainer>
+                    <PokeTypeContainer>
+                        {pokeTypeList[0] && getPokeTypeImg(pokeTypeList[0])}
+                        {pokeTypeList[0] && getPokeTypeImg(pokeTypeList[1])}
+                    </PokeTypeContainer>
                 </InfoContainer> 
                 <Image src= {pokeImg} alt="pokemon_image"/>
             </DataContainer>
