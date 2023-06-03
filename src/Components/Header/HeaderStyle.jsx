@@ -7,12 +7,43 @@ export const HeaderContainer = styled.div`
     align-items: center;
     background-color: #FFFFFF;
     padding: 0 1em 0em 0em;
+
+    @media (min-width: 320px) and (max-width: 600px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        height: auto;
+        padding: .5em 0;
+    }
+   /*  @media (max-width: 768px) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        //flex-wrap: wrap;
+        gap: 1em;
+        padding: 0 1em;
+    } */
 `
 
 export const Image = styled.img`
-    scale: .9;
+    width: 280px;
     justify-self: center;
     grid-column: 2/3;
+    
+    
+
+    @media (min-width: 320px) and (max-width: 600px){
+        max-width: 250px;
+        order: 1;
+    }
+
+   /*  @media (max-width: 768px) {
+        min-width: 170px;
+        max-width: 500px;
+    } */
 `
 export const NavLink = styled.a`
     grid-column: 1/2;
@@ -34,15 +65,25 @@ export const NavLink = styled.a`
     &:active{
         text-decoration: none;
     };
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-width: 250px;
+        margin: 0;
+        order: 3;
+    }
 `
-''
+
 export const ArrowIcon = styled.img`
-    scale: .9;
+    height: 20px;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-width: 18px;
+    }
 `
 
 export const Button = styled.button`
-    height: 3em;
-    width: 12em;
+    height: 60px;
+    width: 200px;
     background-color: #33A4F5;
     margin-left: 10em;
     font-family: 'Poppins', sans-serif;
@@ -61,6 +102,13 @@ export const Button = styled.button`
     &:active{
         text-decoration: none;
     };
+
+    @media (min-width: 320px) and (max-width: 600px){
+        max-width: 110px;
+        max-height: 35px; 
+        margin:0;
+        order: 2;
+    }
 `
 export const DeleteButton = styled.button`
     font-family: 'Poppins', sans-serif;
@@ -70,8 +118,8 @@ export const DeleteButton = styled.button`
     color: #FFFFFF;
     margin-left: 10em;
     line-height: .9em;
-    height: 3em;
-    width: 15em;
+    height: 60px;
+    width: 200px;
     border-radius: .3em;
     background-color: #FF6262;
     border: 1px solid #FF6262;
@@ -83,4 +131,15 @@ export const DeleteButton = styled.button`
         &:active{
             text-decoration: underline;
         };
+
+    @media (max-width: 768px) {
+        width: 140px;
+        margin-left: 0;
+    }
 `
+
+
+/*  @media (max-width: 768px) {
+        width: 140px;
+        margin-left: 0;
+    } */
