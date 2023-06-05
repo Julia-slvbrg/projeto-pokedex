@@ -13,6 +13,14 @@ export const PageContainer = styled.div`
     background-size: 59em;
     background-position-x: 13em;
     background-position-y: -1em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        padding: .6em 0;
+        background-image: none;
+        align-items: center;
+        height: 200vh;
+        width: 100vw;
+    }
 `
 
 export const DetText= styled.h1`
@@ -22,6 +30,11 @@ export const DetText= styled.h1`
     font-weight: 700;
     font-size: 2.8em;
     line-height: 1em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        font-size: 1.8em;
+        margin-top: .5em;
+    }
 `
 
 export const CardContainer = styled.div`
@@ -96,6 +109,15 @@ export const CardContainer = styled.div`
     background-size: 43em;
     background-position-x: 44em;
     background-position-y: 1em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        height: auto;
+        width: 19em;
+        margin-top: -1.3em;
+    }
 ` 
 
 export const ImageContainer = styled.div`
@@ -105,6 +127,12 @@ export const ImageContainer = styled.div`
     justify-content: flex-start;
     gap: 2.5em;
     grid-column: 1/2;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        flex-direction: row;
+        gap: .8em;
+        order: 3;
+    }
 `
 
 export const PokeImg = styled.img`
@@ -112,6 +140,11 @@ export const PokeImg = styled.img`
     width: 230px;
     height: 230px;
     border-radius: .5em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        width: 125px;
+        height: 125px;
+    }
 `
 
 export const StatsContainer = styled.div`
@@ -120,6 +153,11 @@ export const StatsContainer = styled.div`
     border-radius: .5em;
     padding: 2em;
     grid-column: 2/3;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        width: 265px;
+        order: 4;
+    }
 `
 
 export const Title = styled.h2`
@@ -130,6 +168,11 @@ export const Title = styled.h2`
     font-size: 1.3em;
     line-height: 1em;
     margin-bottom: 18px;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        font-size: 1em;
+        line-height: .4em;
+    }
 `
 
 export const StatsParams = styled.div`
@@ -159,6 +202,11 @@ export const StatsText = styled.p`
     line-height: 3em;
     width: 100px;
     color: #8c8787;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        line-height: 2.3em;
+        width: 195px;
+    }
 `
 
 export const StatsNumber = styled.p`
@@ -169,6 +217,10 @@ export const StatsNumber = styled.p`
     font-weight: 400;
     line-height: 10px;
     color: #000000;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        line-height: 2.3em;
+    }
 `
 
 export const TotalStatsBar = styled.div`
@@ -188,6 +240,11 @@ export const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        order: 2;
+        margin-top: -5em;
+    }
 `
 export const PokeId = styled.h3`
     font-family: 'Inter', sans-serif;
@@ -223,6 +280,14 @@ export const ImgBox = styled.div`
     position: relative;
     top: -8em;
     right: 1em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        height: 20em;
+        width: 20em;
+        top: 1em;
+        right: -.6em;
+        order: 1;
+    }
 `
 export const ProfileImg = styled.img`
     width: 70%;
@@ -239,6 +304,11 @@ export const MovesContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     margin-top: 2.8em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        height: 300px;
+        width: 260px;
+    }
 `
 
 export const Moves = styled.p`

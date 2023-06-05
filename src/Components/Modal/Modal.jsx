@@ -26,9 +26,9 @@ export const Modal = ({ openModal, setOpenModal, isFunctionCatch}) => {
             </Background>
         )
     }else if(openModal && !isFunctionCatch){
-        return(
+        return( 
             <Background onClick={setOpenModal}>
-                <ModalContainer>
+                <ModalContainer removedPokemon={true} >
                     <Title>Oh, no!</Title>
                     <Text>O Pokémon foi removido da sua Pokédex</Text>
                 </ModalContainer>

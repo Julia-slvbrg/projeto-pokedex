@@ -73,20 +73,11 @@ export const PokemonCardContainer = styled.div`
     background-position-x: 11.2em;
     background-position-y: -1em;
 
- /*    @media (max-width: 768px) {
-    //Styles for screens up to 768px wide 
-    width: 100%;
-    max-width: 400px;
-    margin: 1.5em auto;
-    background-position-x: center;
-  } */
-
     @media (min-width: 320px) and (max-width: 600px) {
         max-height: 12em;
         max-width: 18em;
         background-position-x: 2.3em;
     }
-
 `
 
 export const DataContainer = styled.div`
@@ -167,13 +158,6 @@ export const ButtonContainer = styled.div`
     align-items: center;
     padding: 0 1.5em 0 2em;
     margin: -2em 0 0 0;
-
-/*     @media (max-width: 768px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 1em;
-    } */
 
     @media (min-width: 320px) and (max-width: 600px) {
         //max-height: 8em;

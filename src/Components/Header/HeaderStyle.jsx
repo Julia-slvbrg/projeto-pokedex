@@ -17,15 +17,6 @@ export const HeaderContainer = styled.div`
         height: auto;
         padding: .5em 0;
     }
-   /*  @media (max-width: 768px) {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        //flex-wrap: wrap;
-        gap: 1em;
-        padding: 0 1em;
-    } */
 `
 
 export const Image = styled.img`
@@ -33,17 +24,10 @@ export const Image = styled.img`
     justify-self: center;
     grid-column: 2/3;
     
-    
-
     @media (min-width: 320px) and (max-width: 600px){
         max-width: 250px;
         order: 1;
     }
-
-   /*  @media (max-width: 768px) {
-        min-width: 170px;
-        max-width: 500px;
-    } */
 `
 export const NavLink = styled.a`
     grid-column: 1/2;
@@ -67,6 +51,7 @@ export const NavLink = styled.a`
     };
 
     @media (min-width: 320px) and (max-width: 600px) {
+        font-size: 1em;
         max-width: 250px;
         margin: 0;
         order: 3;
@@ -133,13 +118,10 @@ export const DeleteButton = styled.button`
         };
 
     @media (max-width: 768px) {
-        width: 140px;
+        font-size: 1em;
+        width: 120px;
+        height: 50px;
         margin-left: 0;
+        order: 2;
     }
 `
-
-
-/*  @media (max-width: 768px) {
-        width: 140px;
-        margin-left: 0;
-    } */
