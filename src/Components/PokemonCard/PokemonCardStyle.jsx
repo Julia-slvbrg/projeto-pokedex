@@ -72,6 +72,12 @@ export const PokemonCardContainer = styled.div`
     background-repeat: no-repeat;
     background-position-x: 11.2em;
     background-position-y: -1em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-height: 12em;
+        max-width: 18em;
+        background-position-x: 2.3em;
+    }
 `
 
 export const DataContainer = styled.div`
@@ -87,6 +93,10 @@ export const InfoContainer = styled.div`
     align-items: flex-start;
     margin: 1.5em 0 0 1em;
     width: 14em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        padding-top: .6em;
+    }
 `
 
 export const PokeId = styled.h3`
@@ -106,6 +116,11 @@ export const PokeName = styled.h1`
     line-height: 1em;
     color: #FFFFFF;
     margin: .2em 0 .6em 0;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        font-size: 1.2em;
+        line-height: 1em;
+    }
 `
 
 export const PokeTypeContainer = styled.div`
@@ -116,6 +131,11 @@ export const PokeTypeContainer = styled.div`
     gap: .5em;
     margin-left: -.75em;
     scale: .9;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-height: 5em;
+        max-width: 5em;
+    }
 `
 
 export const Image = styled.img`
@@ -124,6 +144,11 @@ export const Image = styled.img`
     position: relative;
     bottom: 3.5em;
     right: .5em;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-height: 9em;
+        max-width: 9em;
+    }
 `
 
 export const ButtonContainer = styled.div`
@@ -133,6 +158,15 @@ export const ButtonContainer = styled.div`
     align-items: center;
     padding: 0 1.5em 0 2em;
     margin: -2em 0 0 0;
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        //max-height: 8em;
+        //max-width: 10em;
+        justify-content: space-evenly;
+        gap: 4em;
+        margin: -.5em;
+        padding: 0;
+    }
 `
 
 export const CatchButton = styled.button`
@@ -154,6 +188,11 @@ export const CatchButton = styled.button`
         &:active{
             text-decoration: underline;
         };
+    
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-height: 2em;
+        max-width: 6em;
+    }
 `
 
 export const DeleteButton = styled.button`
@@ -175,6 +214,11 @@ export const DeleteButton = styled.button`
         &:active{
             text-decoration: underline;
         };
+    
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-height: 2em;
+        max-width: 6em;
+    }
 `
 
 export const DetailsLink = styled.a`
@@ -192,4 +236,9 @@ export const DetailsLink = styled.a`
     &:active{
         text-decoration: none;
     };
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        max-height: 2em;
+        max-width: 6em;
+    }
 `
