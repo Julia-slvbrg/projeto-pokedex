@@ -1,6 +1,7 @@
-import { HeaderContainer, Image, Button, NavLink, ArrowIcon, DeleteButton } from "./HeaderStyle";
+import { HeaderContainer, Image, Button, NavLink, NavLinkPoke, ArrowIcon, DeleteButton, LinksContainer } from "./HeaderStyle";
 import headerLogo from "../../assets/images/pokemons-logo-header.svg";
-import arrowSymbol from "../../assets/images/eva_arrow-ios-back-outline.svg";
+import arrowSymbolBackward from "../../assets/images/arrow_back_ios_FILL0_wght400_GRAD0_opsz48.svg";
+import arrowSymbolFoward from "../../assets/images/arrow_forward_ios_FILL0_wght400_GRAD0_opsz48.svg"
 import {goToPokemonList, goToPokedex, goBack} from "../../Routes/coordinator";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -12,10 +13,12 @@ export const Header = () => {
     const location = useLocation();
     const context = useContext(GlobalContext);
     
-    const { removePokemon, catchPokemon, pokedex, setOpenModal, setIsFunctionCatch, pokemonDetail} = context;
+    const { removePokemon, catchPokemon, pokedex, setOpenModal, setIsFunctionCatch, pokemonDetail, pokeNameParams} = context;
+
 
     const chooseButton = () => {
-        const pokemonInPokedex = pokedex.find((pokeObj)=> pokeObj.name == pokemonDetail.name);
+
+        const pokemonInPokedex = pokedex.find((pokeObj)=> pokeObj.name == pokeNameParams);
            
         return (pokemonInPokedex ? 
             <DeleteButton onClick={()=>{
@@ -43,7 +46,7 @@ export const Header = () => {
             return(
                 <HeaderContainer>
                     <NavLink onClick={() => goToPokemonList(navigate)}>
-                        <ArrowIcon src={arrowSymbol}/>
+                        <ArrowIcon src={arrowSymbolBackward}/>
                         Todos Pokémons
                     </NavLink>
                     <Image src={headerLogo} />
@@ -53,10 +56,16 @@ export const Header = () => {
         }else{
             return(
                 <HeaderContainer>
-                    <NavLink onClick={() => goBack(navigate)}>
-                        <ArrowIcon src={arrowSymbol}/>
-                        Todos Pokémons
-                    </NavLink>
+                    <LinksContainer>
+                        <NavLink onClick={() => goBack(navigate)}>
+                            <ArrowIcon src={arrowSymbolBackward}/>
+                            Todos Pokémons
+                        </NavLink>
+                        <NavLinkPoke onClick={() => goToPokedex(navigate)}>
+                        Pokedex
+                        <ArrowIcon src={arrowSymbolFoward}/>
+                        </NavLinkPoke>
+                    </LinksContainer>
                     <Image src={headerLogo} />
                     { chooseButton() }
                 </HeaderContainer>

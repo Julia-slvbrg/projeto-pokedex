@@ -10,7 +10,7 @@ import { Modal } from "../../Components/Modal/Modal";
 export const PokemonDetailPage = () =>{
     const context = useContext(GlobalContext);
     const { pokemonName } = useParams();
-    const {getPokeTypeImg, openModal, setOpenModal, isFunctionCatch} = context;
+    const {getPokeTypeImg, openModal, setOpenModal, isFunctionCatch, setPokemonDetail, setPokeNameParams} = context;
 
     const [pokeImgFront, setPokeImgFront] = useState('');
     const [pokeImgBack, setPokeImgBack] = useState('');
@@ -23,6 +23,7 @@ export const PokemonDetailPage = () =>{
     
     useEffect(()=>{
         getPokeDetails()
+        setPokeNameParams(pokemonName)
     }, []);
 
     const getPokeDetails = async () => {
@@ -36,11 +37,16 @@ export const PokemonDetailPage = () =>{
             setStats(response.data.stats);
             setPokeImg(response.data.sprites.other['official-artwork'].front_default);
             setMoves(response.data.moves);
-
+            setPokemonDetail({
+                name: `${pokemonName}`,
+                url: `${BASE_URL}pokemon/${pokemonName}`
+            })
         } catch (error) {
             //console.log(error.response);
         }
     };
+
+
 
     //função para mostrar o id do pokemon conforme o formato requerido
     const id = pokeId.toString().length === 1? `0${pokeId.toString()}` : pokeId.toString();
