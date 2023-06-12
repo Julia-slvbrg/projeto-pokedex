@@ -29,6 +29,7 @@ export const Image = styled.img`
         order: 1;
     }
 `
+
 export const NavLink = styled.a`
     grid-column: 1/2;
     margin-left: 3em;
@@ -51,9 +52,38 @@ export const NavLink = styled.a`
     };
 
     @media (min-width: 320px) and (max-width: 600px) {
-        font-size: 1em;
+        font-size: .95em;
         max-width: 250px;
         margin: 0;
+        order: 3;
+    }
+`
+
+export const NavLinkPoke = styled.a`
+    grid-column: 1/2;
+    margin-left: 6em;
+    font-family: 'Poppins', sans-serif;
+    color: #1A1A1A;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.1em;
+    line-height: .9em;
+    text-decoration: underline;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:hover{
+        cursor: pointer;
+    };
+    &:active{
+        text-decoration: none;
+    };
+
+    @media (min-width: 320px) and (max-width: 600px) {
+        font-size: .95em;
+        max-width: 250px;
+        margin-left: 2.8em;
         order: 3;
     }
 `
@@ -64,6 +94,14 @@ export const ArrowIcon = styled.img`
     @media (min-width: 320px) and (max-width: 600px) {
         max-width: 18px;
     }
+`
+
+export const LinksContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: .3em;
 `
 
 export const Button = styled.button`
@@ -95,6 +133,7 @@ export const Button = styled.button`
         order: 2;
     }
 `
+
 export const DeleteButton = styled.button`
     font-family: 'Poppins', sans-serif;
     font-style: normal;

@@ -30,12 +30,14 @@ export default function GlobalState({children}){
     const [pokemonDetail, setPokemonDetail] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [isFunctionCatch, setIsFunctionCatch] = useState(false);
+    const [pokeNameParams, setPokeNameParams] = useState('');
+
 
     useEffect(()=>{
         getAllPokemon() 
         setPokemonDetail()
     }, []);
- 
+
     
     //Função parar pegar todos os dados de todos os pokemons da API
     const getAllPokemon = async () => {
@@ -48,6 +50,29 @@ export default function GlobalState({children}){
             //console.log(error.response)
         }
     };
+
+    useEffect(()=>{
+        const pokemonListLocalStorage = JSON.parse(localStorage.getItem('pokemonList'));
+        const pokedexLocalStorage = JSON.parse(localStorage.getItem('pokedex'));
+
+        if(pokedexLocalStorage){
+           setPokemonList(pokemonListLocalStorage);
+            setPokedex(pokedexLocalStorage);
+        }
+    }, [])
+
+    useEffect(()=>{
+        if(pokedex.length>0){
+            const pokemonListToString = JSON.stringify(pokemonList);
+            const pokedexToString = JSON.stringify(pokedex);
+            localStorage.setItem('pokemonList', pokemonListToString);
+            localStorage.setItem('pokedex', pokedexToString);
+        }else{
+            localStorage.removeItem('pokemonList');
+            localStorage.removeItem('pokedex');
+        }
+    }, [pokemonList, pokedex])
+ 
 
     //Função para acrescentar pokemons ao array pokedex
     const catchPokemon = (caughtPokemon) => {
@@ -135,7 +160,10 @@ export default function GlobalState({children}){
         openModal,
         setOpenModal,
         isFunctionCatch, 
-        setIsFunctionCatch
+        setIsFunctionCatch,
+        pokeNameParams,
+        setPokeNameParams,
+        
     };
 
     return(
