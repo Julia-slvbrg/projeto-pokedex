@@ -29,10 +29,10 @@ O Projeto Pokédex é uma aplicação que permite ao usuário escolher diversos 
 ![Pokémon- detalhes](./src/assets/images/readme/layout-pokemondetails.png)
 
 2. Versão mobile
-<img src="./src/assets/images/readme/mobile-pokemonList.png" alt="Lista de Pokémons" height=380px>
-<img src="./src/assets/images/readme/mobile-pokedex.png" alt="Pokédex" height=380px>
+<img src="./src/assets/images/readme/mobile-pokemonList.png" alt="Lista de Pokémons" height=500px>
+<img src="./src/assets/images/readme/mobile-pokedex.png" alt="Pokédex" height=500px>
 <br/>
-<img src="./src/assets/images/readme/mobile-details.png" alt="Pokémon- detalhes" height=400px>
+<img src="./src/assets/images/readme/mobile-details.png" alt="Pokémon- detalhes" height=600px>
 
 ## Demonstração
 
