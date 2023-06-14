@@ -38,6 +38,9 @@ O Projeto Pokédex é uma aplicação que permite ao usuário escolher diversos 
 
 [Link Demonstração (deploy)](https://light-horn.surge.sh/) 
 
+https://github.com/Julia-slvbrg/projeto-pokedex/assets/114543081/d2b2fa77-f9b0-4f37-b63e-f7cd0cfce589
+
+
 ## Como rodar o projeto
 ```bash
 # Clone este repositório
