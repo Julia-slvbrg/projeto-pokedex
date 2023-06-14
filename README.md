@@ -15,20 +15,26 @@ O Projeto Pokédex é uma aplicação que permite ao usuário escolher diversos 
 
 ## Funcionalidades do projeto
 
- - [x] Lista de pokémons
- - [x] Adicionar e remover pokémons
- - [x] Pokédex com os pokémons adicionados
+ - [x] Página com lista de cards de pokémons
+ - [x] Adicionar e/ou remover pokémons da pokédex
+ - [x] Pokédex com card dos pokémons adicionados
  - [x] Detalhes do pokémon selecionado
 
 ## Layout
+1. Versão Desktop
 ![Lista de Pokemóns](./src/assets/images/readme/layout-pokemonlist.png)
 ![Lista de Pokemóns-Card](./src/assets/images/readme/layout-pokemonList-card.png)
 ![Pokédex](./src/assets/images/readme/layout-pokedex.png)
 ![Pokédex-Card](./src/assets/images/readme/layout-pokedex-card.png)
 ![Pokémon- detalhes](./src/assets/images/readme/layout-pokemondetails.png)
 
+2. Versão mobile
+![Lista de Pokémons](./src/assets/images/readme/mobile-pokemonList.png)
+![Pokédex](./src/assets/images/readme/mobile-pokedex.png)
+![Pokémon- detalhes](./src/assets/images/readme/mobile-details.png)
+
 ## Demonstração
-[Link Demonstração (deploy)](https://draconian-poison.surge.sh/)
+[Link Demonstração (deploy)](https://light-horn.surge.sh/) 
 
 ## Como rodar o projeto
 ```bash
@@ -55,11 +61,13 @@ http://127.0.0.1:5173/
 4. React Router
 5. React Context
 6. [PokéAPI](https://pokeapi.co/)
+7. Media Query
 
 ## Pessoa autora 
 [LinkedIn](https://www.linkedin.com/in/julia-silva-borges/)
 
 ## Próximos passos
-- [ ] Deixar o layout responsivo para diferentes tamanhos de tela
-- [ ] Implementar bibliotecas de estilização (Design Systems)
-- [ ] Implementar uso do LocalStorage para salvamento temporário do conteúdo da pokédex
+ - [X] Implementar responsividade do layout para vizualição em celulares
+ - [ ] Implementar responsividade do layout para vizualição em monitores grandes
+ - [ ] Implementar bibliotecas de estilização (Design Systems)
+ - [X] Implementar uso do LocalStorage para salvamento temporário do conteúdo da pokédex
